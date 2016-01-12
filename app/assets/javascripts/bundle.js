@@ -51,7 +51,7 @@
 	var Route = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-router\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())).Route;
 	var IndexRoute = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-router\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())).IndexRoute;
 
-	var Welcome = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./Welcome\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var Welcome = __webpack_require__(160);
 	var Commute = __webpack_require__(159);
 
 	var App = React.createClass({
@@ -19855,6 +19855,962 @@
 	});
 
 	module.exports = Commute;
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var History = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-router\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())).History;
+
+	var Welcome = React.createClass({
+		displayName: 'Welcome',
+
+		mixins: [History],
+
+		getInitialState: function () {
+			debugger;
+			return { home: "",
+				initHomeStation: "Home Station ",
+				work: "",
+				initWorkStation: "Work Station ",
+				greeting: "(Please enable cookies to use this site)"
+			};
+		},
+
+		setCookie: function (home, work) {
+			document.cookie = "home=" + home;
+			document.cookie = "work=" + work;
+		},
+
+		handleSubmit: function () {
+			this.setState({ greeting: "" });
+			if (this.state.home === "" || this.state.work === "") {
+				this.setState({ greeting: "(You are missing an entry)" });
+				$('#cookies-warning').css('color', 'red');
+			} else if (this.state.home === this.state.work) {
+				this.setState({ greeting: "(Home and work stations must not be the same)" });
+				$('#cookies-warning').css('color', 'red');
+			} else {
+				this.setCookie(this.state.home, this.state.work);
+				this.props.history.pushState(null, "/commute");
+			}
+		},
+
+		setHomeStation: function (event) {
+			this.setState({ home: event.target.getAttribute('value') });
+			this.setState({ initHomeStation: event.target.text });
+		},
+
+		setWorkStation: function (event) {
+			this.setState({ work: event.target.getAttribute('value') });
+			this.setState({ initWorkStation: event.target.text });
+		},
+
+		render: function () {
+			return React.createElement(
+				'div',
+				{ className: 'welcome page' },
+				React.createElement(
+					'h1',
+					null,
+					'One-Time Setup'
+				),
+				React.createElement(
+					'div',
+					{ className: 'panel panel-default' },
+					React.createElement(
+						'div',
+						{ className: 'panel-heading' },
+						React.createElement(
+							'h3',
+							{ className: 'panel-title' },
+							'What station do you commute from?'
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'panel-body' },
+						React.createElement(
+							'div',
+							{ className: 'dropdown' },
+							React.createElement(
+								'div',
+								{ className: 'dropdown container' },
+								React.createElement(
+									'button',
+									{ id: 'home-dropdown-button', className: 'btn btn-primary dropdown-toggle', type: 'button', 'data-toggle': 'dropdown' },
+									this.state.initHomeStation,
+									React.createElement('span', { className: 'caret' })
+								),
+								React.createElement(
+									'ul',
+									{ className: 'dropdown-menu' },
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: '12TH' },
+											'12th St. Oakland City Center'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: '16TH' },
+											'16th St. Mission'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: '19TH' },
+											'19th St. Oakland'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: '24TH' },
+											'24th St. Mission'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'ASHB' },
+											'Ashby'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'BALB' },
+											'Balboa Park'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'BAYF' },
+											'Bay Fair'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'CAST' },
+											'Castro Valley'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'CIVC' },
+											'Civic Center/UN Plaza'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'COLS' },
+											'Coliseum'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'COLM' },
+											'Colma'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'CONC' },
+											'Concord'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'DALY' },
+											'Daly City'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'DBRK' },
+											'Downtown Berkeley'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'DUBL' },
+											'Dublin/Pleasanton'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'DELN' },
+											'El Cerrito del Norte'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'PLZA' },
+											'El Cerrito Plaza'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'EMBR' },
+											'Embarcadero'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'FRMT' },
+											'Fremont'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'FTVL' },
+											'Fruitvale'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'GLEN' },
+											'Glen Park'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'HAYW' },
+											'Hayward'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'LAFY' },
+											'Lafayette'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'LAKE' },
+											'Lake Merritt'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'MCAR' },
+											'MacArthur'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'MLBR' },
+											'Millbrae'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'MONT' },
+											'Montgomery St.'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'NBRK' },
+											'North Berkeley'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'NCON' },
+											'North Concord/Martinez'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'OAKL' },
+											'Oakland Intl Airport'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'ORIN' },
+											'Orinda'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'PITT' },
+											'Pittsburg/Bay Point'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'PHIL' },
+											'Pleasant Hill/Contra Costa Centre'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'POWL' },
+											'Powell St.'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'RICH' },
+											'Richmond'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'ROCK' },
+											'Rockridge'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'SBRN' },
+											'San Bruno'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'SFIA' },
+											'San Francisco Intl Airport'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'SANL' },
+											'San Leandro'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'SHAY' },
+											'South Hayward'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'SSAN' },
+											'South San Francisco'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'UCTY' },
+											'Union City'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'WCRK' },
+											'Walnut Creek'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'WDUB' },
+											'West Dublin/Pleasanton'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setHomeStation },
+										React.createElement(
+											'a',
+											{ value: 'WOAK' },
+											'West Oakland'
+										)
+									)
+								)
+							)
+						)
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'panel panel-default' },
+					React.createElement(
+						'div',
+						{ className: 'panel-heading' },
+						React.createElement(
+							'h3',
+							{ className: 'panel-title' },
+							'What station do you work by?'
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'panel-body' },
+						React.createElement(
+							'div',
+							{ className: 'dropdown' },
+							React.createElement(
+								'div',
+								{ className: 'dropdown container' },
+								React.createElement(
+									'button',
+									{ id: 'home-dropdown', className: 'btn btn-primary dropdown-toggle', type: 'button', 'data-toggle': 'dropdown' },
+									this.state.initWorkStation,
+									React.createElement('span', { className: 'caret' })
+								),
+								React.createElement(
+									'ul',
+									{ className: 'dropdown-menu' },
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: '12TH' },
+											'12th St. Oakland City Center'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: '16TH' },
+											'16th St. Mission'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: '19TH' },
+											'19th St. Oakland'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: '24TH' },
+											'24th St. Mission'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'ASHB' },
+											'Ashby'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'BALB' },
+											'Balboa Park'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'BAYF' },
+											'Bay Fair'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'CAST' },
+											'Castro Valley'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'CIVC' },
+											'Civic Center/UN Plaza'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'COLS' },
+											'Coliseum'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'COLM' },
+											'Colma'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'CONC' },
+											'Concord'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'DALY' },
+											'Daly City'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'DBRK' },
+											'Downtown Berkeley'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'DUBL' },
+											'Dublin/Pleasanton'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'DELN' },
+											'El Cerrito del Norte'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'PLZA' },
+											'El Cerrito Plaza'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'EMBR' },
+											'Embarcadero'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'FRMT' },
+											'Fremont'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'FTVL' },
+											'Fruitvale'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'GLEN' },
+											'Glen Park'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'HAYW' },
+											'Hayward'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'LAFY' },
+											'Lafayette'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'LAKE' },
+											'Lake Merritt'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'MCAR' },
+											'MacArthur'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'MLBR' },
+											'Millbrae'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'MONT' },
+											'Montgomery St.'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'NBRK' },
+											'North Berkeley'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'NCON' },
+											'North Concord/Martinez'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'OAKL' },
+											'Oakland Intl Airport'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'ORIN' },
+											'Orinda'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'PITT' },
+											'Pittsburg/Bay Point'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'PHIL' },
+											'Pleasant Hill/Contra Costa Centre'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'POWL' },
+											'Powell St.'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'RICH' },
+											'Richmond'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'ROCK' },
+											'Rockridge'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'SBRN' },
+											'San Bruno'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'SFIA' },
+											'San Francisco Intl Airport'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'SANL' },
+											'San Leandro'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'SHAY' },
+											'South Hayward'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'SSAN' },
+											'South San Francisco'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'UCTY' },
+											'Union City'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'WCRK' },
+											'Walnut Creek'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'WDUB' },
+											'West Dublin/Pleasanton'
+										)
+									),
+									React.createElement(
+										'li',
+										{ onClick: this.setWorkStation },
+										React.createElement(
+											'a',
+											{ value: 'WOAK' },
+											'West Oakland'
+										)
+									)
+								),
+								React.createElement(
+									'h6',
+									{ id: 'cookies-warning' },
+									this.state.greeting
+								)
+							)
+						)
+					)
+				),
+				React.createElement(
+					'button',
+					{ onClick: this.handleSubmit, type: 'button', className: 'btn btn-success' },
+					'Done'
+				)
+			);
+		}
+	});
+
+	module.exports = Welcome;
 
 /***/ }
 /******/ ]);
