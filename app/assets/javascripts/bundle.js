@@ -52,7 +52,7 @@
 	var IndexRoute = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-router\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())).IndexRoute;
 
 	var Welcome = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./Welcome\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	var Commute = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./Commute\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var Commute = __webpack_require__(159);
 
 	var App = React.createClass({
 	  displayName: 'App',
@@ -19675,6 +19675,186 @@
 
 	module.exports = __webpack_require__(3);
 
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var History = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-router\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())).History;
+
+	var Commute = React.createClass({
+		displayName: 'Commute',
+
+		mixins: [History],
+
+		getInitialState: function () {
+			var cookie = document.cookie.replace(/ /g, '').split(";");
+			return { home: cookie[0].slice(5),
+				work: cookie[1].slice(5),
+				startPoint: "",
+				endpoint: "",
+				headingTo: "",
+				apiKey: "&key=ZV4R-PUQ9-86WT-DWE9",
+				optionSelected: false,
+				trips: []
+			};
+		},
+
+		componentDidMount: function () {
+			$('.commute.show').hide();
+		},
+
+		goWork: function () {
+			this.setState({ startPoint: this.state.home, endPoint: this.state.work });
+			this.setState({ headingTo: "Going to work!" });
+			this.setState({ optionSelected: true });
+			var xhttp = new XMLHttpRequest();
+			var linkStart = "http://api.bart.gov/api/sched.aspx?cmd=depart&orig=";
+			var link = linkStart + this.state.home + "&dest=" + this.state.work + this.state.apiKey;
+			xhttp.onreadystatechange = function () {
+				if (xhttp.readyState == 4 && xhttp.status == 200) {
+					var response = xhttp.responseXML;
+					this.parseResponse(response);
+				}
+			}.bind(this);
+			xhttp.open("GET", link, true);
+			xhttp.send();
+		},
+
+		goHome: function () {
+			this.setState({ startPoint: this.state.work, endPoint: this.state.home });
+			this.setState({ headingTo: "Going home!" });
+			this.setState({ optionSelected: true });
+			var xhttp = new XMLHttpRequest();
+			var linkStart = "http://api.bart.gov/api/sched.aspx?cmd=depart&orig=";
+			var link = linkStart + this.state.work + "&dest=" + this.state.home + this.state.apiKey;
+			xhttp.onreadystatechange = function () {
+				if (xhttp.readyState == 4 && xhttp.status == 200) {
+					var response = xhttp.responseXML;
+					this.parseResponse(response);
+				}
+			}.bind(this);
+			xhttp.open("GET", link, true);
+			xhttp.send();
+		},
+
+		parseResponse: function (response) {
+			var tripObjectArray = [];
+			var tripObject = {};
+			var trips = response.getElementsByTagName("trip");
+			for (var i = 0; i < trips.length; i++) {
+				tripObject = {
+					departure: $(trips[i]).attr('origTimeMin'),
+					arrival: $(trips[i]).attr('destTimeMin')
+				};
+				tripObjectArray.push(tripObject);
+			}
+			this.setState({ trips: tripObjectArray });
+		},
+
+		goToRoot: function () {
+			this.props.history.pushState(null, "/");
+		},
+
+		render: function () {
+			if (this.state.optionSelected === false) {
+				return React.createElement(
+					'div',
+					{ className: 'commute page' },
+					React.createElement(
+						'div',
+						{ className: 'commute options' },
+						React.createElement(
+							'h1',
+							{ className: 'commute options header' },
+							'Where are you headed to?'
+						),
+						React.createElement(
+							'div',
+							{ className: 'commute option buttons' },
+							React.createElement(
+								'button',
+								{ onClick: this.goWork, type: 'button', className: 'btn btn-secondary btn-lg btn-block' },
+								'Work'
+							),
+							React.createElement(
+								'button',
+								{ onClick: this.goHome, type: 'button', className: 'btn btn-primary btn-lg btn-block' },
+								'Home'
+							),
+							React.createElement(
+								'button',
+								{ onClick: this.goToRoot, type: 'button', className: 'btn btn-danger' },
+								'Change Commute'
+							)
+						)
+					)
+				);
+			} else {
+				return React.createElement(
+					'div',
+					{ className: 'commute show' },
+					React.createElement(
+						'h1',
+						{ className: 'commute header' },
+						this.state.headingTo
+					),
+					React.createElement(
+						'h2',
+						{ className: 'commute subheader' },
+						this.state.startPoint,
+						' to ',
+						this.state.endPoint
+					),
+					React.createElement(
+						'table',
+						{ className: 'table table-bordered' },
+						React.createElement(
+							'thead',
+							null,
+							React.createElement(
+								'tr',
+								null,
+								React.createElement(
+									'th',
+									null,
+									'Departing'
+								),
+								React.createElement(
+									'th',
+									null,
+									'Arriving'
+								)
+							)
+						),
+						React.createElement(
+							'tbody',
+							null,
+							this.state.trips.map(function (trip) {
+								return React.createElement(
+									'tr',
+									{ key: trip.departure },
+									React.createElement(
+										'td',
+										null,
+										trip.departure
+									),
+									React.createElement(
+										'td',
+										null,
+										trip.arrival
+									)
+								);
+							})
+						)
+					)
+				);
+			}
+		}
+	});
+
+	module.exports = Commute;
 
 /***/ }
 /******/ ]);
