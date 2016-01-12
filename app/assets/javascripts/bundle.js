@@ -24030,6 +24030,17 @@
 			};
 		},
 
+		componentDidMount: function () {
+			if (document.cookie != "") {
+				var cookie = document.cookie.replace(/ /g, '').split(";");
+				for (var i = 0; i < cookie.length; i++) {
+					if (cookie[i].slice(0, 4) === "work" || cookie[1].slice(0, 4) === "home") {
+						this.props.history.pushState(null, "/commute");
+					}
+				}
+			}
+		},
+
 		setCookie: function (home, work) {
 			document.cookie = "home=" + home;
 			document.cookie = "work=" + work;
@@ -24051,12 +24062,12 @@
 
 		setHomeStation: function (event) {
 			this.setState({ home: event.target.getAttribute('value') });
-			this.setState({ initHomeStation: event.target.text });
+			this.setState({ initHomeStation: event.target.text + " " });
 		},
 
 		setWorkStation: function (event) {
 			this.setState({ work: event.target.getAttribute('value') });
-			this.setState({ initWorkStation: event.target.text });
+			this.setState({ initWorkStation: event.target.text + " " });
 		},
 
 		render: function () {
@@ -24977,9 +24988,17 @@
 		mixins: [History],
 
 		getInitialState: function () {
-			var cookie = document.cookie.replace(/ /g, '').split(";");
-			return { home: cookie[0].slice(5),
-				work: cookie[1].slice(5),
+			var cookies = document.cookie.replace(/ /g, '').split(";");
+			for (var i = 0; i < cookies.length; i++) {
+				if (cookies[i].slice(0, 4) === "home") {
+					var homeStation = cookies[i].slice(5);
+				} else if (cookies[i].slice(0, 4) === "work") {
+					var workStation = cookies[i].slice(5);
+				}
+			}
+
+			return { home: homeStation,
+				work: workStation,
 				startPoint: "",
 				endpoint: "",
 				headingTo: "",
@@ -25041,7 +25060,9 @@
 			this.setState({ trips: tripObjectArray });
 		},
 
-		goToRoot: function () {
+		resetCookies: function () {
+			document.cookie = "home" + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+			document.cookie = "work" + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
 			this.props.history.pushState(null, "/");
 		},
 
@@ -25073,7 +25094,7 @@
 							),
 							React.createElement(
 								'button',
-								{ onClick: this.goToRoot, type: 'button', className: 'btn btn-danger' },
+								{ onClick: this.resetCookies, type: 'button', className: 'btn btn-danger' },
 								'Change Commute'
 							)
 						)

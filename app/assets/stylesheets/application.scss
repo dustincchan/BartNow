@@ -20,37 +20,49 @@ button.btn.btn-primary.dropdown-toggle {
 }
 
 .btn-success {
-	width: 63%;
+	width: 55%;
+}
+
+.btn-success {
+    height: 200px;
+    width: 100%;
+    font-size: 80px;
+}
+button.btn.btn-primary.btn-lg.btn-block {
+    height: 200px;
+    font-size: 88px;
+    position: relative;
+    top: 40px;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+button.btn.btn-secondary.btn-lg.btn-block {
+    height: 200px;
+    font-size: 88px;
+    box-shadow: 10px 10px 5px #888888;
+}
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    position: relative;
+    top: 111px;
+    height: 150px;
+    width: 65%;
+    font-size: 39px;
+    box-shadow: 10px 10px 5px #888888;
 }
 
 .commute.options { 
 	text-align: center;
 }
 
-button.btn.btn-primary.btn-lg.btn-block {
-    height: 200px;
-    font-size: 88px;
-}
-
-button.btn.btn-secondary.btn-lg.btn-block {
-    height: 200px;
-    font-size: 88px;
-}
-
 h1.commute.options.header {
-    font-size: 80px;
+    font-size: 71px;
+    margin-top: 11%;
+    margin-bottom: 18%;
 }
 
-.btn-danger {
-    color: #fff;
-    background-color: #d9534f;
-    border-color: #d43f3a;
-    position: relative;
-    top: 10px;
-    height: 150px;
-    width: 65%;
-    font-size: 60px;
-}
 
 .table-bordered {
     border: 1px solid #ddd;
@@ -66,3 +78,9 @@ h2.commute.subheader {
     text-align: center;
     font-size: 54px;
 }
+
+.commute.option.buttons {
+    width: 55%;
+    position: relative;
+    margin: auto;
+ }

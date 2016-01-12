@@ -13,6 +13,17 @@ var Welcome = React.createClass({
 					}
 	},
 
+	componentDidMount: function () {
+		if (document.cookie != "") {
+			var cookie = document.cookie.replace(/ /g,'').split(";")
+			for (var i = 0; i < cookie.length; i++) {
+				if (cookie[i].slice(0,4) === "work" || cookie[1].slice(0,4) === "home") {
+					this.props.history.pushState(null, "/commute");
+				}
+			}
+		}
+	},
+
 	setCookie: function (home, work) {
 		document.cookie="home=" + home
 		document.cookie="work=" + work
@@ -34,12 +45,12 @@ var Welcome = React.createClass({
 
 	setHomeStation: function (event) {
 		this.setState({ home: event.target.getAttribute('value') })
-		this.setState({ initHomeStation: event.target.text })
+		this.setState({ initHomeStation: event.target.text + " " })
 	},
 
 	setWorkStation: function (event) {
 		this.setState({ work: event.target.getAttribute('value') })
-		this.setState({ initWorkStation: event.target.text })
+		this.setState({ initWorkStation: event.target.text + " " })
 	},
 
 	render: function () {

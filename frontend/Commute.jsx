@@ -5,9 +5,17 @@ var Commute = React.createClass({
 	mixins: [History],
 
 	getInitialState: function () {
-		var cookie = document.cookie.replace(/ /g,'').split(";")
-		return { home: cookie[0].slice(5), 
-						 work: cookie[1].slice(5), 
+		var cookies = document.cookie.replace(/ /g,'').split(";")
+		for (var i = 0; i < cookies.length; i++) {
+			if (cookies[i].slice(0,4) === "home") {
+				var homeStation = cookies[i].slice(5);
+			} else if (cookies[i].slice(0,4) === "work") {
+				var workStation = cookies[i].slice(5);
+			}
+		}
+
+		return { home: homeStation, 
+						 work: workStation, 
 						 startPoint: "",
 						 endpoint: "",
 						 headingTo: "",
@@ -73,7 +81,9 @@ var Commute = React.createClass({
 		this.setState({ trips: tripObjectArray })
 	},
 
-	goToRoot: function () {
+	resetCookies: function () {
+		document.cookie = "home" + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"
+		document.cookie = "work" + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"
 		this.props.history.pushState(null, "/");
 	},
 
@@ -86,7 +96,7 @@ var Commute = React.createClass({
 						<div className="commute option buttons">
 							<button onClick={this.goWork} type="button" className="btn btn-secondary btn-lg btn-block">Work</button>
 							<button onClick={this.goHome} type="button" className="btn btn-primary btn-lg btn-block">Home</button>
-							<button onClick={this.goToRoot} type="button" className="btn btn-danger">Change Commute</button>
+							<button onClick={this.resetCookies} type="button" className="btn btn-danger">Change Commute</button>
 						</div>
 					</div>
 				</div>
