@@ -24954,15 +24954,15 @@
 											'West Oakland'
 										)
 									)
-								),
-								React.createElement(
-									'h6',
-									{ id: 'cookies-warning' },
-									this.state.greeting
 								)
 							)
 						)
 					)
+				),
+				React.createElement(
+					'h6',
+					{ id: 'cookies-warning' },
+					this.state.greeting
 				),
 				React.createElement(
 					'button',

@@ -174,11 +174,11 @@ var Welcome = React.createClass({
 							   	<li onClick={this.setWorkStation}><a value="WDUB">West Dublin/Pleasanton</a></li>
 							    <li onClick={this.setWorkStation}><a value="WOAK">West Oakland</a></li>
 							  </ul>
-							  <h6 id="cookies-warning">{this.state.greeting}</h6>
 							</div>
 						</div>
 				  </div>
 				</div>
+				<h6 id="cookies-warning">{this.state.greeting}</h6>
 				<button onClick={this.handleSubmit} type="button" className="btn btn-success">Done</button>
 			</div>
 		)
