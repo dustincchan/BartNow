@@ -25,8 +25,8 @@ var Welcome = React.createClass({
 	},
 
 	setCookie: function (home, work) {
-		document.cookie="home=" + home
-		document.cookie="work=" + work
+		document.cookie="home=" + home + "; expires=Thu, 18 Dec 3017 12:00:00 UTC";
+		document.cookie="work=" + work + "; expires=Thu, 18 Dec 3017 12:00:00 UTC";
 	},
 
 	handleSubmit: function () {
