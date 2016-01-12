@@ -5,7 +5,6 @@ var Welcome = React.createClass({
 	mixins: [History],
 
 	getInitialState: function () {
-		debugger;
 		return {home: "", 
 						initHomeStation: "Home Station ", 
 						work: "", 
