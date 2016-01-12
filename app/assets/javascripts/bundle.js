@@ -24076,7 +24076,7 @@
 				{ className: 'welcome page' },
 				React.createElement(
 					'h1',
-					null,
+					{ className: 'welcome header' },
 					'One-Time Setup'
 				),
 				React.createElement(
@@ -24542,7 +24542,7 @@
 								{ className: 'dropdown container' },
 								React.createElement(
 									'button',
-									{ id: 'home-dropdown', className: 'btn btn-primary dropdown-toggle', type: 'button', 'data-toggle': 'dropdown' },
+									{ id: 'work-dropdown', className: 'btn btn-primary dropdown-toggle', type: 'button', 'data-toggle': 'dropdown' },
 									this.state.initWorkStation,
 									React.createElement('span', { className: 'caret' })
 								),

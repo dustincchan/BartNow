@@ -6,7 +6,9 @@
 }
 
 button.btn.btn-primary.dropdown-toggle {
-    width: 70%;
+    width: 75%;
+    height: 200px;
+    font-size: 52px;
 }
 
 .open>.dropdown-menu {
@@ -17,17 +19,16 @@ button.btn.btn-primary.dropdown-toggle {
 
 #cookies-warning {
 	color: green;
-}
-
-.btn-success {
-	width: 55%;
+    font-size: 40px;
 }
 
 .btn-success {
     height: 200px;
-    width: 100%;
+    width: 73%;
     font-size: 80px;
+    box-shadow: 10px 10px 5px #888888;
 }
+
 button.btn.btn-primary.btn-lg.btn-block {
     height: 200px;
     font-size: 88px;
@@ -57,12 +58,22 @@ button.btn.btn-secondary.btn-lg.btn-block {
 	text-align: center;
 }
 
+h1.welcome.header {
+    font-size: 86px;
+}
+
 h1.commute.options.header {
     font-size: 71px;
     margin-top: 11%;
     margin-bottom: 18%;
 }
 
+h3.panel-title {
+    font-size: 50px;
+    height: 200px;
+    position: relative;
+    top: 63px;
+}
 
 .table-bordered {
     border: 1px solid #ddd;
@@ -83,4 +94,14 @@ h2.commute.subheader {
     width: 55%;
     position: relative;
     margin: auto;
- }
+}
+
+button#home-dropdown-button {
+    width: 100%;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+button#work-dropdown {
+    width: 100%;
+    box-shadow: 10px 10px 5px #888888;  
+}

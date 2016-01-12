@@ -56,7 +56,7 @@ var Welcome = React.createClass({
 	render: function () {
 		return (
 			<div className="welcome page">
-				<h1>One-Time Setup</h1>
+				<h1 className="welcome header">One-Time Setup</h1>
 				<div className="panel panel-default">
 				  <div className="panel-heading">
 				    <h3 className="panel-title">What station do you commute from?</h3>
@@ -125,7 +125,7 @@ var Welcome = React.createClass({
 				  <div className="panel-body">
 						<div className="dropdown">
 							<div className="dropdown container">
-							  <button id="home-dropdown" className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.initWorkStation}
+							  <button id="work-dropdown" className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.initWorkStation}
 							  <span className="caret"></span></button>
 							  <ul className="dropdown-menu">
 							    <li onClick={this.setWorkStation}><a value="12TH">12th St. Oakland City Center</a></li>
