@@ -1,0 +1,84 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ 
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+.welcome.page {
+    text-align: center;
+}
+
+button.btn.btn-primary.dropdown-toggle {
+    width: 70%;
+}
+
+.open>.dropdown-menu {
+    display: block;
+    width: 68%;
+    left: 16%;
+}
+
+#cookies-warning {
+	color: green;
+}
+
+.btn-success {
+	width: 63%;
+}
+
+.commute.options { 
+	text-align: center;
+}
+
+button.btn.btn-primary.btn-lg.btn-block {
+    height: 200px;
+    font-size: 88px;
+}
+
+button.btn.btn-secondary.btn-lg.btn-block {
+    height: 200px;
+    font-size: 88px;
+}
+
+h1.commute.options.header {
+    font-size: 80px;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    position: relative;
+    top: 10px;
+    height: 150px;
+    width: 65%;
+    font-size: 60px;
+}
+
+.table-bordered {
+    border: 1px solid #ddd;
+    font-size: 30px;
+}
+
+h1.commute.header {
+    text-align: center;
+    font-size: 78px;
+}
+
+h2.commute.subheader {
+    text-align: center;
+    font-size: 54px;
+}
