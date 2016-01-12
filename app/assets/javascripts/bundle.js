@@ -25134,7 +25134,7 @@
 							{ className: 'commute option buttons' },
 							React.createElement(
 								'button',
-								{ onClick: this.goWork, type: 'button', className: 'btn btn-secondary btn-lg btn-block' },
+								{ id: 'work-button', onClick: this.goWork, type: 'button', className: 'btn btn-success' },
 								'Work'
 							),
 							React.createElement(
@@ -25144,7 +25144,7 @@
 							),
 							React.createElement(
 								'button',
-								{ onClick: this.resetCookies, type: 'button', className: 'btn btn-danger' },
+								{ id: 'change-commute-button', onClick: this.resetCookies, type: 'button', className: 'btn btn-danger' },
 								'Change Commute'
 							)
 						)

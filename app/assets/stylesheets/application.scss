@@ -42,12 +42,13 @@ button.btn.btn-primary.btn-lg.btn-block {
     box-shadow: 10px 10px 5px #888888;
 }
 
-button.btn.btn-secondary.btn-lg.btn-block {
+#work-button {
     height: 200px;
     font-size: 88px;
     box-shadow: 10px 10px 5px #888888;
+    width: 100%
 }
-.btn-danger {
+#change-commute-button {
     color: #fff;
     background-color: #d9534f;
     border-color: #d43f3a;
@@ -140,4 +141,5 @@ button#work-dropdown {
 button#back-button {
     width: 100%;
     font-size: 70px;
+    box-shadow: 10px 10px 5px #888888;
 }
