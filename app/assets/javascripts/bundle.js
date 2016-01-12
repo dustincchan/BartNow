@@ -24103,8 +24103,7 @@
 								React.createElement(
 									'button',
 									{ id: 'home-dropdown-button', className: 'btn btn-primary dropdown-toggle', type: 'button', 'data-toggle': 'dropdown' },
-									this.state.initHomeStation,
-									React.createElement('span', { className: 'caret' })
+									this.state.initHomeStation
 								),
 								React.createElement(
 									'ul',
@@ -24543,8 +24542,7 @@
 								React.createElement(
 									'button',
 									{ id: 'work-dropdown', className: 'btn btn-primary dropdown-toggle', type: 'button', 'data-toggle': 'dropdown' },
-									this.state.initWorkStation,
-									React.createElement('span', { className: 'caret' })
+									this.state.initWorkStation
 								),
 								React.createElement(
 									'ul',
@@ -24960,14 +24958,14 @@
 					)
 				),
 				React.createElement(
-					'h6',
-					{ id: 'cookies-warning' },
-					this.state.greeting
-				),
-				React.createElement(
 					'button',
 					{ onClick: this.handleSubmit, type: 'button', className: 'btn btn-success' },
 					'Done'
+				),
+				React.createElement(
+					'h6',
+					{ id: 'cookies-warning' },
+					this.state.greeting
 				)
 			);
 		}

@@ -65,7 +65,7 @@ var Welcome = React.createClass({
 						<div className="dropdown">
 							<div className="dropdown container">
 							  <button id="home-dropdown-button" className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.initHomeStation}
-							  <span className="caret"></span></button>
+							  </button>
 							  <ul className="dropdown-menu scrollable-menu">
 							    <li onClick={this.setHomeStation}><a value="12TH">12th St. Oakland City Center</a></li>
 							    <li onClick={this.setHomeStation}><a value="16TH">16th St. Mission</a></li>
@@ -126,7 +126,7 @@ var Welcome = React.createClass({
 						<div className="dropdown">
 							<div className="dropdown container">
 							  <button id="work-dropdown" className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.initWorkStation}
-							  <span className="caret"></span></button>
+							  </button>
 							  <ul className="dropdown-menu scrollable-menu">
 							    <li onClick={this.setWorkStation}><a value="12TH">12th St. Oakland City Center</a></li>
 							    <li onClick={this.setWorkStation}><a value="16TH">16th St. Mission</a></li>
@@ -178,8 +178,8 @@ var Welcome = React.createClass({
 						</div>
 				  </div>
 				</div>
-				<h6 id="cookies-warning">{this.state.greeting}</h6>
 				<button onClick={this.handleSubmit} type="button" className="btn btn-success">Done</button>
+				<h6 id="cookies-warning">{this.state.greeting}</h6>
 			</div>
 		)
 	}

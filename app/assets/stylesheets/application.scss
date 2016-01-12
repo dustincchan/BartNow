@@ -20,8 +20,10 @@ button.btn.btn-primary.dropdown-toggle {
 }
 
 #cookies-warning {
-	color: #134F1E;
+    color: #134F1E;
     font-size: 40px;
+    position: relative;
+    top: 22px;
 }
 
 .btn-success {
@@ -63,8 +65,9 @@ button.btn.btn-secondary.btn-lg.btn-block {
 
 h1.welcome.header {
     font-size: 86px;
-    margin-bottom: 7%;
-    margin-top: 6%;
+    position: relative;
+    top: 10px;
+    margin-top: 0%;
 }
 
 h1.commute.options.header {
@@ -125,4 +128,9 @@ button#work-dropdown {
 
 .panel-default {
     border-color: #FFF;
+}
+
+.welcome.page {
+    position: relative;
+    top: 100px;
 }
