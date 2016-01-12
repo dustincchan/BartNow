@@ -24108,7 +24108,7 @@
 								),
 								React.createElement(
 									'ul',
-									{ className: 'dropdown-menu' },
+									{ className: 'dropdown-menu scrollable-menu' },
 									React.createElement(
 										'li',
 										{ onClick: this.setHomeStation },
@@ -24548,7 +24548,7 @@
 								),
 								React.createElement(
 									'ul',
-									{ className: 'dropdown-menu' },
+									{ className: 'dropdown-menu scrollable-menu' },
 									React.createElement(
 										'li',
 										{ onClick: this.setWorkStation },

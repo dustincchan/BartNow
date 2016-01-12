@@ -66,7 +66,7 @@ var Welcome = React.createClass({
 							<div className="dropdown container">
 							  <button id="home-dropdown-button" className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.initHomeStation}
 							  <span className="caret"></span></button>
-							  <ul className="dropdown-menu">
+							  <ul className="dropdown-menu scrollable-menu">
 							    <li onClick={this.setHomeStation}><a value="12TH">12th St. Oakland City Center</a></li>
 							    <li onClick={this.setHomeStation}><a value="16TH">16th St. Mission</a></li>
 							    <li onClick={this.setHomeStation}><a value="19TH">19th St. Oakland</a></li>
@@ -127,7 +127,7 @@ var Welcome = React.createClass({
 							<div className="dropdown container">
 							  <button id="work-dropdown" className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.initWorkStation}
 							  <span className="caret"></span></button>
-							  <ul className="dropdown-menu">
+							  <ul className="dropdown-menu scrollable-menu">
 							    <li onClick={this.setWorkStation}><a value="12TH">12th St. Oakland City Center</a></li>
 							    <li onClick={this.setWorkStation}><a value="16TH">16th St. Mission</a></li>
 							    <li onClick={this.setWorkStation}><a value="19TH">19th St. Oakland</a></li>
