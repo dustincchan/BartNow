@@ -1,8 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-
-var Router = require('react-router').Router;
-var Route = require('react-router').Route;
+var ReactRouter = require('react-router');
+var Router = ReactRouter.Router;
+var Route = ReactRouter.Route;
 var IndexRoute = require('react-router').IndexRoute;
 
 var Welcome = require('./Welcome');
@@ -26,5 +26,5 @@ var routes = (
 );
 
 document.addEventListener("DOMContentLoaded", function () {
-  ReactDOM.render(<Router>{routes}</Router>, document.getElementById('main'));
+  ReactDOM.render(<Router>{routes}</Router>, document.getElementById('root'));
 });
