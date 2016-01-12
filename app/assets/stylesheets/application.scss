@@ -55,7 +55,7 @@ button.btn.btn-secondary.btn-lg.btn-block {
     top: 111px;
     height: 150px;
     width: 65%;
-    font-size: 39px;
+    font-size: 35px;
     box-shadow: 10px 10px 5px #888888;
 }
 
@@ -96,6 +96,9 @@ h1.commute.header {
 h2.commute.subheader {
     text-align: center;
     font-size: 54px;
+    background: #F4E1E1;
+    height: 66px;
+    margin: 0
 }
 
 .commute.option.buttons {
@@ -133,4 +136,9 @@ button#work-dropdown {
 .welcome.page {
     position: relative;
     top: 100px;
+}
+
+button#back-button {
+    width: 100%;
+    font-size: 70px;
 }

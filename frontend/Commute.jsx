@@ -1,6 +1,54 @@
 var React = require('react');
 var History = require('react-router').History;
 
+var stationMap = {
+	"12TH" : "12th St. Oakland City Center",
+	"16TH" : "16th St. Mission",
+	"19TH" : "19th St. Oakland",
+	"24TH" : "24th St. Mission",
+	"ASHB" : "Ashby",
+	"BALB" : "Balboa Park",
+	"BAYF" : "Bay Fair",
+	"CAST" : "Castro Valley",
+	"CIVC" : "Civic Center/UN Plaza",
+	"COLS" : "Coliseum",
+	"COLM" : "Colma",
+	"CONC" : "Concord",
+	"DALY" : "Daly City",
+	"DBRK" : "Downtown Berkeley",
+	"DUBL" : "Dublin/Pleasanton",
+	"DELN" : "El Cerrito del Norte",
+	"PLZA" : "El Cerrito Plaza",
+	"EMBR" : "Embarcadero",
+	"FRMT" : "Fremont",
+	"FTVL" : "Fruitvale",
+	"GLEN" : "Glen Park",
+	"HAYW" : "Hayward",
+	"LAFY" : "Lafayette",
+	"LAKE" : "Lake Merritt",
+	"MCAR" : "MacArthur",
+	"MLBR" : "Millbrae",
+	"MONT" : "Montgomery St.",
+	"NBRK" : "North Berkeley",
+	"NCON" : "North Concord/Martinez",
+	"OAKL" : "Oakland Intl Airport",
+	"ORIN" : "Orinda",
+	"PITT" : "Pittsburg/Bay Point",
+	"PHIL" : "Pleasant Hill/Contra Costa Centre",
+	"POWL" : "Powell St.",
+	"RICH" : "Richmond",
+	"ROCK" : "Rockridge",
+	"SBRN" : "San Bruno",
+	"SFIA" : "San Francisco Intl Airport",
+	"SANL" : "San Leandro",
+	"SHAY" : "South Hayward",
+	"SSAN" : "South San Francisco",
+	"UCTY" : "Union City",
+	"WCRK" : "Walnut Creek",
+	"WDUB" : "West Dublin/Pleasanton",
+	"WOAK" : "West Oakland"
+};
+
 var Commute = React.createClass({
 	mixins: [History],
 
@@ -87,6 +135,10 @@ var Commute = React.createClass({
 		this.props.history.pushState(null, "/");
 	},
 
+	goBack: function () {
+		this.setState({ optionSelected: false });
+	},
+
 	render: function () {
 		if (this.state.optionSelected === false) {
 			return (
@@ -105,7 +157,7 @@ var Commute = React.createClass({
 				return (
 					<div className="commute show">
 						<h1 className="commute header">{this.state.headingTo}</h1>            
-						<h2 className="commute subheader">{this.state.startPoint} to {this.state.endPoint}</h2>
+						<h2 className="commute subheader">{stationMap[this.state.startPoint]} to {stationMap[this.state.endPoint]}</h2>
 						  <table className="table table-bordered">
 						    <thead>
 						      <tr>
@@ -116,7 +168,7 @@ var Commute = React.createClass({
 						    <tbody>
 						    	{this.state.trips.map(function (trip) {
 						    		return (
-						    			<tr key={trip.departure}>
+						    			<tr className="info" key={trip.departure}>
 							    			<td>{trip.departure}</td>
 							    			<td>{trip.arrival}</td>
 							    		</tr>
@@ -124,6 +176,7 @@ var Commute = React.createClass({
 						    	})}
 						    </tbody>
 						  </table>
+						  <button id="back-button" onClick={this.goBack} type="button" className="btn btn-danger">Back</button>
 					</div>
 				)
 			}

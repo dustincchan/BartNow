@@ -24980,6 +24980,54 @@
 	var React = __webpack_require__(1);
 	var History = __webpack_require__(159).History;
 
+	var stationMap = {
+		"12TH": "12th St. Oakland City Center",
+		"16TH": "16th St. Mission",
+		"19TH": "19th St. Oakland",
+		"24TH": "24th St. Mission",
+		"ASHB": "Ashby",
+		"BALB": "Balboa Park",
+		"BAYF": "Bay Fair",
+		"CAST": "Castro Valley",
+		"CIVC": "Civic Center/UN Plaza",
+		"COLS": "Coliseum",
+		"COLM": "Colma",
+		"CONC": "Concord",
+		"DALY": "Daly City",
+		"DBRK": "Downtown Berkeley",
+		"DUBL": "Dublin/Pleasanton",
+		"DELN": "El Cerrito del Norte",
+		"PLZA": "El Cerrito Plaza",
+		"EMBR": "Embarcadero",
+		"FRMT": "Fremont",
+		"FTVL": "Fruitvale",
+		"GLEN": "Glen Park",
+		"HAYW": "Hayward",
+		"LAFY": "Lafayette",
+		"LAKE": "Lake Merritt",
+		"MCAR": "MacArthur",
+		"MLBR": "Millbrae",
+		"MONT": "Montgomery St.",
+		"NBRK": "North Berkeley",
+		"NCON": "North Concord/Martinez",
+		"OAKL": "Oakland Intl Airport",
+		"ORIN": "Orinda",
+		"PITT": "Pittsburg/Bay Point",
+		"PHIL": "Pleasant Hill/Contra Costa Centre",
+		"POWL": "Powell St.",
+		"RICH": "Richmond",
+		"ROCK": "Rockridge",
+		"SBRN": "San Bruno",
+		"SFIA": "San Francisco Intl Airport",
+		"SANL": "San Leandro",
+		"SHAY": "South Hayward",
+		"SSAN": "South San Francisco",
+		"UCTY": "Union City",
+		"WCRK": "Walnut Creek",
+		"WDUB": "West Dublin/Pleasanton",
+		"WOAK": "West Oakland"
+	};
+
 	var Commute = React.createClass({
 		displayName: 'Commute',
 
@@ -25064,6 +25112,10 @@
 			this.props.history.pushState(null, "/");
 		},
 
+		goBack: function () {
+			this.setState({ optionSelected: false });
+		},
+
 		render: function () {
 			if (this.state.optionSelected === false) {
 				return React.createElement(
@@ -25110,9 +25162,9 @@
 					React.createElement(
 						'h2',
 						{ className: 'commute subheader' },
-						this.state.startPoint,
+						stationMap[this.state.startPoint],
 						' to ',
-						this.state.endPoint
+						stationMap[this.state.endPoint]
 					),
 					React.createElement(
 						'table',
@@ -25141,7 +25193,7 @@
 							this.state.trips.map(function (trip) {
 								return React.createElement(
 									'tr',
-									{ key: trip.departure },
+									{ className: 'info', key: trip.departure },
 									React.createElement(
 										'td',
 										null,
@@ -25155,6 +25207,11 @@
 								);
 							})
 						)
+					),
+					React.createElement(
+						'button',
+						{ id: 'back-button', onClick: this.goBack, type: 'button', className: 'btn btn-danger' },
+						'Back'
 					)
 				);
 			}
