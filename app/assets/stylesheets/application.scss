@@ -54,8 +54,8 @@ button.btn.btn-secondary.btn-lg.btn-block {
     position: relative;
     top: 111px;
     height: 150px;
-    width: 65%;
-    font-size: 35px;
+    width: 100%;
+    font-size: 50px;
     box-shadow: 10px 10px 5px #888888;
 }
 
@@ -96,9 +96,8 @@ h1.commute.header {
 h2.commute.subheader {
     text-align: center;
     font-size: 54px;
-    background: #F4E1E1;
     height: 66px;
-    margin: 0
+    margin-bottom: 81px;
 }
 
 .commute.option.buttons {
