@@ -25177,12 +25177,12 @@
 								null,
 								React.createElement(
 									'th',
-									null,
+									{ id: 'departing' },
 									'Departing'
 								),
 								React.createElement(
 									'th',
-									null,
+									{ id: 'arriving' },
 									'Arriving'
 								)
 							)
