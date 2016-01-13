@@ -1,11 +1,93 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-@media screen and (max-width: 1680px) {
-    
+.welcome.page {
+    text-align: center;
 }
 
-@media screen and (max-width: 480px) {
+.panel.panel-default {
+    width: 50%;
+    position: relative;
+    margin: auto;
+}
+
+.dropdown.container {
+    width: 100%;
+}
+
+button#home-dropdown-button {
+    width: 100%;
+}
+
+button#work-dropdown {
+    width: 100%;
+}
+
+ul.dropdown-menu.scrollable-menu {
+    width: 100%;
+    text-align: center;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    position: relative;
+    width: 10%;
+    min-width: 1%;
+    top: 10px;
+}
+
+h6#cookies-warning {
+    position: relative;
+    top: 10px;
+}
+
+.everything {
+    text-align: center;
+}
+
+.commute.option.buttons {
+    width: 40%;
+    margin: auto;
+}
+
+button#work-button {
+    min-width: 80%;
+    font-size: 20px;
+    box-shadow: 5px 5px 3px #888888;
+}
+button#home-button {
+    width: 80%;
+    margin: auto;
+    position: relative;
+    top: 30px;
+    box-shadow: 5px 5px 3px #888888;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    min-width: 40%;
+    position: relative;
+    top: 62px;
+    box-shadow: 5px 5px 3px #888888;
+}
+
+table.table.table-bordered {
+    font-size: 50px;
+}
+
+th#departing {
+    text-align: center;
+}
+
+th#arriving {
+    text-align: center;
+}
+/*DO NOT TOUCH VERY SENSITIVE THANK YOU*/
+@media screen and (max-device-width: 480px) {
     .welcome.page {
         text-align: center;
     }
@@ -28,14 +110,14 @@
         color: #134F1E;
         font-size: 40px;
         position: relative;
-        top: 22px;
+        top: 52px;
     }
 
     .btn-success {
         height: 129px;
         width: 43%;
         font-size: 72px;
-        margin-top: 17%;
+        margin-top: 10%;
         box-shadow: 10px 10px 5px #888888;
     }
 
@@ -47,7 +129,7 @@
         box-shadow: 10px 10px 5px #888888;
     }
 
-    #work-button {
+    button#work-button {
         height: 200px;
         font-size: 88px;
         box-shadow: 10px 10px 5px #888888;
@@ -116,12 +198,12 @@
     }
 
     button#home-dropdown-button {
-        width: 100%;
+        width: 65%;
         box-shadow: 10px 10px 5px #888888;
     }
 
     button#work-dropdown {
-        width: 100%;
+        width: 65%;
         box-shadow: 10px 10px 5px #888888;  
     }
 
@@ -165,5 +247,15 @@
 
     th {
         text-align: center;
+    }
+
+    .panel.panel-default {
+    width: 100%;
+    }
+    button#home-button {
+        width: 100%;
+        margin: auto;
+        position: relative;
+        top: 113px;
     }
 }

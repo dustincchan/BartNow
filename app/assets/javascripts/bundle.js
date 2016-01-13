@@ -25139,7 +25139,7 @@
 							),
 							React.createElement(
 								'button',
-								{ onClick: this.goHome, type: 'button', className: 'btn btn-primary btn-lg btn-block' },
+								{ id: 'home-button', onClick: this.goHome, type: 'button', className: 'btn btn-primary btn-lg btn-block' },
 								'Home'
 							),
 							React.createElement(
