@@ -87,6 +87,7 @@ h3.panel-title {
 .table-bordered {
     border: 1px solid #ddd;
     font-size: 60px;
+    text-align: center;
 }
 
 h1.commute.header {
@@ -155,4 +156,8 @@ button#back-button {
 
 tbody {
     color: #0D420D;
+}
+
+th {
+    text-align: center;
 }

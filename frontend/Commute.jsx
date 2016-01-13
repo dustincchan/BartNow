@@ -161,8 +161,8 @@ var Commute = React.createClass({
 						  <table className="table table-bordered">
 						    <thead>
 						      <tr>
-						        <th>Departing</th>
-						        <th>Arriving</th>
+						        <th id="departing">Departing</th>
+						        <th id="arriving">Arriving</th>
 						      </tr>
 						    </thead>
 						    <tbody>
