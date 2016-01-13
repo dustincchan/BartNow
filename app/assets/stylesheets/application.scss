@@ -92,6 +92,10 @@ th#arriving {
         text-align: center;
     }
 
+    .dropdown.container {
+    width: 70%;
+    }
+
     button.btn.btn-primary.dropdown-toggle {
         width: 75%;
         height: 200px;
@@ -102,9 +106,13 @@ th#arriving {
         display: block;
         position: absolute;
         width: 96%;
-        left: 2%;
         font-size: 46px;
     }
+
+    ul.dropdown-menu.scrollable-menu {
+    width: 100%;
+    text-align: center;
+    }   
 
     #cookies-warning {
         color: #134F1E;
@@ -198,12 +206,12 @@ th#arriving {
     }
 
     button#home-dropdown-button {
-        width: 65%;
+        width: 100%;
         box-shadow: 10px 10px 5px #888888;
     }
 
     button#work-dropdown {
-        width: 65%;
+        width: 100%;
         box-shadow: 10px 10px 5px #888888;  
     }
 
@@ -234,7 +242,6 @@ th#arriving {
         box-shadow: 10px 10px 5px #888888;
         position: relative;
         top: 150px;
-        left: 18%;
     }
 
     .commute.show {
