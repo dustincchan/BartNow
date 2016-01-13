@@ -25193,7 +25193,7 @@
 							this.state.trips.map(function (trip) {
 								return React.createElement(
 									'tr',
-									{ className: 'info', key: trip.departure },
+									{ key: trip.departure },
 									React.createElement(
 										'td',
 										null,

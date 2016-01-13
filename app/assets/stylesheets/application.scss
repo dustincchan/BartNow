@@ -38,7 +38,7 @@ button.btn.btn-primary.btn-lg.btn-block {
     height: 200px;
     font-size: 88px;
     position: relative;
-    top: 40px;
+    top: 86px;
     box-shadow: 10px 10px 5px #888888;
 }
 
@@ -53,10 +53,10 @@ button.btn.btn-primary.btn-lg.btn-block {
     background-color: #d9534f;
     border-color: #d43f3a;
     position: relative;
-    top: 111px;
+    top: 207px;
     height: 150px;
-    width: 100%;
-    font-size: 50px;
+    width: 74%;
+    font-size: 41px;
     box-shadow: 10px 10px 5px #888888;
 }
 
@@ -74,7 +74,7 @@ h1.welcome.header {
 h1.commute.options.header {
     font-size: 71px;
     margin-top: 11%;
-    margin-bottom: 15%;
+    margin-bottom: 6%;
 }
 
 h3.panel-title {
@@ -98,7 +98,9 @@ h2.commute.subheader {
     text-align: center;
     font-size: 54px;
     height: 66px;
-    margin-bottom: 81px;
+    margin-top: 71px;
+    margin-bottom: 112px;
+    color: #9F6C6C;
 }
 
 .commute.option.buttons {
@@ -139,7 +141,18 @@ button#work-dropdown {
 }
 
 button#back-button {
-    width: 100%;
+    width: 61%;
     font-size: 70px;
     box-shadow: 10px 10px 5px #888888;
+    position: relative;
+    top: 150px;
+    left: 18%;
+}
+
+.commute.show {
+    margin-top: 110px;
+}
+
+tbody {
+    color: #0D420D;
 }

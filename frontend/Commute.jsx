@@ -168,7 +168,7 @@ var Commute = React.createClass({
 						    <tbody>
 						    	{this.state.trips.map(function (trip) {
 						    		return (
-						    			<tr className="info" key={trip.departure}>
+						    			<tr key={trip.departure}>
 							    			<td>{trip.departure}</td>
 							    			<td>{trip.arrival}</td>
 							    		</tr>
