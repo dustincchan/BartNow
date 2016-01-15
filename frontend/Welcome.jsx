@@ -7,9 +7,9 @@ var Welcome = React.createClass({
 
 	getInitialState: function () {
 		return {home: "", 
-						initHomeStation: "Home Station ", 
+						initHomeStation: "Departure Station ", 
 						work: "", 
-						initWorkStation: "Work Station ",
+						initWorkStation: "Arrival Station ",
 						greeting: "(Please enable cookies to use this site)"
 					}
 	},
@@ -19,7 +19,7 @@ var Welcome = React.createClass({
 			var cookie = document.cookie.replace(/ /g,'').split(";")
 			for (var i = 0; i < cookie.length; i++) {
 				if (cookie[i].slice(0,4) === "work" || cookie[1].slice(0,4) === "home") {
-					this.props.history.pushState(null, "/commute");
+					this.setState()
 				}
 			}
 		}
@@ -40,7 +40,7 @@ var Welcome = React.createClass({
 			$('#cookies-warning').css('color', 'red');
 		} else {
 			this.setCookie(this.state.home, this.state.work);
-			this.props.history.pushState(null, "/commute");
+			
 		}
 	},
 
@@ -61,7 +61,7 @@ var Welcome = React.createClass({
 				<h1 className="welcome header">QuickPlanner</h1>
 				<div className="panel panel-default">
 				  <div className="panel-heading">
-				    <h3 className="panel-title">What station do you commute from?</h3>
+				    <h3 className="panel-title">Leaving from:</h3>
 				  </div>
 				  <div className="panel-body">
 						<div className="dropdown">
@@ -122,7 +122,7 @@ var Welcome = React.createClass({
 
 				<div className="panel panel-default">
 				  <div className="panel-heading">
-				    <h3 className="panel-title">What station do you work by?</h3>
+				    <h3 className="panel-title">Heading to:</h3>
 				  </div>
 				  <div className="panel-body">
 						<div className="dropdown">
@@ -182,13 +182,21 @@ var Welcome = React.createClass({
 				</div>
 				<div className="panel panel-default">
 					<div className="panel-body">
-					<button onClick={this.handleSubmit} type="button" className="btn btn-success">Done</button>
+					<button 
+						onClick={this.handleSubmit} 
+						data-toggle="collapse"
+						data-target="#commute-component"
+						type="button" 
+						className="btn btn-success">Done
+					</button>
 					<h6 id="cookies-warning">{this.state.greeting}</h6>
 					</div>
 				</div>
+				<div className="collapse" id="commute-component">
+					<Commute home={this.state.home} work={this.state.work}/>
+				</div>
 			</div>
 			<br/>
-			<Commute/>
 		</div>
 		)
 	}

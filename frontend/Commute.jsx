@@ -140,20 +140,7 @@ var Commute = React.createClass({
 	},
 
 	render: function () {
-		if (this.state.optionSelected === false) {
-			return (
-				<div className="commute page">
-					<div className="commute options">
-						<h1 className="commute options header">Where are you headed to?</h1>
-						<div className="commute option buttons">
-							<button id="work-button" onClick={this.goWork} type="button" className="btn btn-success">Work</button>
-							<button id="home-button" onClick={this.goHome} type="button" className="btn btn-primary btn-lg btn-block">Home</button>
-							<button id="change-commute-button" onClick={this.resetCookies} type="button" className="btn btn-danger">Change Commute</button>
-						</div>
-					</div>
-				</div>
-					)
-			} else {
+
 				return (
 					<div className="commute show">
 						<h1 className="commute header">{this.state.headingTo}</h1>            
@@ -179,7 +166,6 @@ var Commute = React.createClass({
 						  <button id="back-button" onClick={this.goBack} type="button" className="btn btn-danger">Back</button>
 					</div>
 				)
-			}
 		}
 });
 

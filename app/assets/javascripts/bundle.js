@@ -24024,9 +24024,9 @@
 
 		getInitialState: function () {
 			return { home: "",
-				initHomeStation: "Home Station ",
+				initHomeStation: "Departure Station ",
 				work: "",
-				initWorkStation: "Work Station ",
+				initWorkStation: "Arrival Station ",
 				greeting: "(Please enable cookies to use this site)"
 			};
 		},
@@ -24036,7 +24036,7 @@
 				var cookie = document.cookie.replace(/ /g, '').split(";");
 				for (var i = 0; i < cookie.length; i++) {
 					if (cookie[i].slice(0, 4) === "work" || cookie[1].slice(0, 4) === "home") {
-						this.props.history.pushState(null, "/commute");
+						this.setState();
 					}
 				}
 			}
@@ -24057,7 +24057,6 @@
 				$('#cookies-warning').css('color', 'red');
 			} else {
 				this.setCookie(this.state.home, this.state.work);
-				this.props.history.pushState(null, "/commute");
 			}
 		},
 
@@ -24092,7 +24091,7 @@
 							React.createElement(
 								'h3',
 								{ className: 'panel-title' },
-								'What station do you commute from?'
+								'Leaving from:'
 							)
 						),
 						React.createElement(
@@ -24531,7 +24530,7 @@
 							React.createElement(
 								'h3',
 								{ className: 'panel-title' },
-								'What station do you work by?'
+								'Heading to:'
 							)
 						),
 						React.createElement(
@@ -24969,7 +24968,12 @@
 							{ className: 'panel-body' },
 							React.createElement(
 								'button',
-								{ onClick: this.handleSubmit, type: 'button', className: 'btn btn-success' },
+								{
+									onClick: this.handleSubmit,
+									'data-toggle': 'collapse',
+									'data-target': '#commute-component',
+									type: 'button',
+									className: 'btn btn-success' },
 								'Done'
 							),
 							React.createElement(
@@ -24978,10 +24982,14 @@
 								this.state.greeting
 							)
 						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'collapse', id: 'commute-component' },
+						React.createElement(Commute, { home: this.state.home, work: this.state.work })
 					)
 				),
-				React.createElement('br', null),
-				React.createElement(Commute, null)
+				React.createElement('br', null)
 			);
 		}
 	});
@@ -25132,104 +25140,70 @@
 		},
 
 		render: function () {
-			if (this.state.optionSelected === false) {
-				return React.createElement(
-					'div',
-					{ className: 'commute page' },
+
+			return React.createElement(
+				'div',
+				{ className: 'commute show' },
+				React.createElement(
+					'h1',
+					{ className: 'commute header' },
+					this.state.headingTo
+				),
+				React.createElement(
+					'h2',
+					{ className: 'commute subheader' },
+					stationMap[this.state.startPoint],
+					' to ',
+					stationMap[this.state.endPoint]
+				),
+				React.createElement(
+					'table',
+					{ className: 'table table-bordered' },
 					React.createElement(
-						'div',
-						{ className: 'commute options' },
+						'thead',
+						null,
 						React.createElement(
-							'h1',
-							{ className: 'commute options header' },
-							'Where are you headed to?'
-						),
-						React.createElement(
-							'div',
-							{ className: 'commute option buttons' },
-							React.createElement(
-								'button',
-								{ id: 'work-button', onClick: this.goWork, type: 'button', className: 'btn btn-success' },
-								'Work'
-							),
-							React.createElement(
-								'button',
-								{ id: 'home-button', onClick: this.goHome, type: 'button', className: 'btn btn-primary btn-lg btn-block' },
-								'Home'
-							),
-							React.createElement(
-								'button',
-								{ id: 'change-commute-button', onClick: this.resetCookies, type: 'button', className: 'btn btn-danger' },
-								'Change Commute'
-							)
-						)
-					)
-				);
-			} else {
-				return React.createElement(
-					'div',
-					{ className: 'commute show' },
-					React.createElement(
-						'h1',
-						{ className: 'commute header' },
-						this.state.headingTo
-					),
-					React.createElement(
-						'h2',
-						{ className: 'commute subheader' },
-						stationMap[this.state.startPoint],
-						' to ',
-						stationMap[this.state.endPoint]
-					),
-					React.createElement(
-						'table',
-						{ className: 'table table-bordered' },
-						React.createElement(
-							'thead',
+							'tr',
 							null,
 							React.createElement(
+								'th',
+								{ id: 'departing' },
+								'Departing'
+							),
+							React.createElement(
+								'th',
+								{ id: 'arriving' },
+								'Arriving'
+							)
+						)
+					),
+					React.createElement(
+						'tbody',
+						null,
+						this.state.trips.map(function (trip) {
+							return React.createElement(
 								'tr',
-								null,
+								{ key: trip.departure },
 								React.createElement(
-									'th',
-									{ id: 'departing' },
-									'Departing'
+									'td',
+									null,
+									trip.departure
 								),
 								React.createElement(
-									'th',
-									{ id: 'arriving' },
-									'Arriving'
+									'td',
+									null,
+									trip.arrival
 								)
-							)
-						),
-						React.createElement(
-							'tbody',
-							null,
-							this.state.trips.map(function (trip) {
-								return React.createElement(
-									'tr',
-									{ key: trip.departure },
-									React.createElement(
-										'td',
-										null,
-										trip.departure
-									),
-									React.createElement(
-										'td',
-										null,
-										trip.arrival
-									)
-								);
-							})
-						)
-					),
-					React.createElement(
-						'button',
-						{ id: 'back-button', onClick: this.goBack, type: 'button', className: 'btn btn-danger' },
-						'Back'
+							);
+						})
 					)
-				);
-			}
+				),
+				React.createElement(
+					'button',
+					{ id: 'back-button', onClick: this.goBack, type: 'button', className: 'btn btn-danger' },
+					'Back'
+				)
+			);
 		}
 	});
 
