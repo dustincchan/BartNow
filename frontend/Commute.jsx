@@ -1,69 +1,13 @@
 var React = require('react');
 var History = require('react-router').History;
 
-var stationMap = {
-	"12TH" : "12th St. Oakland City Center",
-	"16TH" : "16th St. Mission",
-	"19TH" : "19th St. Oakland",
-	"24TH" : "24th St. Mission",
-	"ASHB" : "Ashby",
-	"BALB" : "Balboa Park",
-	"BAYF" : "Bay Fair",
-	"CAST" : "Castro Valley",
-	"CIVC" : "Civic Center/UN Plaza",
-	"COLS" : "Coliseum",
-	"COLM" : "Colma",
-	"CONC" : "Concord",
-	"DALY" : "Daly City",
-	"DBRK" : "Downtown Berkeley",
-	"DUBL" : "Dublin/Pleasanton",
-	"DELN" : "El Cerrito del Norte",
-	"PLZA" : "El Cerrito Plaza",
-	"EMBR" : "Embarcadero",
-	"FRMT" : "Fremont",
-	"FTVL" : "Fruitvale",
-	"GLEN" : "Glen Park",
-	"HAYW" : "Hayward",
-	"LAFY" : "Lafayette",
-	"LAKE" : "Lake Merritt",
-	"MCAR" : "MacArthur",
-	"MLBR" : "Millbrae",
-	"MONT" : "Montgomery St.",
-	"NBRK" : "North Berkeley",
-	"NCON" : "North Concord/Martinez",
-	"OAKL" : "Oakland Intl Airport",
-	"ORIN" : "Orinda",
-	"PITT" : "Pittsburg/Bay Point",
-	"PHIL" : "Pleasant Hill/Contra Costa Centre",
-	"POWL" : "Powell St.",
-	"RICH" : "Richmond",
-	"ROCK" : "Rockridge",
-	"SBRN" : "San Bruno",
-	"SFIA" : "San Francisco Intl Airport",
-	"SANL" : "San Leandro",
-	"SHAY" : "South Hayward",
-	"SSAN" : "South San Francisco",
-	"UCTY" : "Union City",
-	"WCRK" : "Walnut Creek",
-	"WDUB" : "West Dublin/Pleasanton",
-	"WOAK" : "West Oakland"
-};
-
 var Commute = React.createClass({
 	mixins: [History],
 
 	getInitialState: function () {
-		var cookies = document.cookie.replace(/ /g,'').split(";")
-		for (var i = 0; i < cookies.length; i++) {
-			if (cookies[i].slice(0,4) === "home") {
-				var homeStation = cookies[i].slice(5);
-			} else if (cookies[i].slice(0,4) === "work") {
-				var workStation = cookies[i].slice(5);
-			}
-		}
 
-		return { home: homeStation, 
-						 work: workStation, 
+		return { home: "", 
+						 work: "", 
 						 startPoint: "",
 						 endpoint: "",
 						 headingTo: "",
@@ -74,7 +18,7 @@ var Commute = React.createClass({
 	},
 
 	componentDidMount: function () {
-		$('.commute.show').hide();
+		this.setState({ home: this.props.home, work: this.props.work });
 	},
 
 	goWork: function () {
@@ -140,11 +84,10 @@ var Commute = React.createClass({
 	},
 
 	render: function () {
-
 				return (
 					<div className="commute show">
 						<h1 className="commute header">{this.state.headingTo}</h1>            
-						<h2 className="commute subheader">{stationMap[this.state.startPoint]} to {stationMap[this.state.endPoint]}</h2>
+						<h2 className="commute subheader">{this.state.home} to {this.state.work}</h2>
 						  <table className="table table-bordered">
 						    <thead>
 						      <tr>
