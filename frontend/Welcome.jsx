@@ -1,5 +1,6 @@
 var React = require('react');
 var Commute = require('./Commute');
+var ApiUtil = require('./ApiUtil');
 var History = require('react-router').History;
 
 var stationMap = {
@@ -59,18 +60,20 @@ var Welcome = React.createClass({
 		if (document.cookie != "") {
 			var cookies = document.cookie.replace(/ /g,'').split(";")
 			for (var i = 0; i < cookies.length; i++) {
-				if (cookies[i].slice(0,4) === "start") {
-					var start = stationMap[cookies[i].slice(5)];
+				if (cookies[i].slice(0,5) === "start") {
+					var start = cookies[i].slice(6);
+					var initStation = stationMap[cookies[i].slice(6)]; 
 				} else if (cookies[i].slice(0,4) === "stop") {
-					var stop = stationMap[cookies[i].slice(5)];
+					var stop = cookies[i].slice(5);
+					var initStop = stationMap[cookies[i].slice(5)];
 				}
 			}
 		}
 
 		return {start: start, 
-						initStation: start, 
+						initStation: initStation, 
 						stop: stop, 
-						initStop: stop,
+						initStop: initStop,
 						greeting: "(Please enable cookies to use this site)"
 					}
 	},
@@ -94,9 +97,8 @@ var Welcome = React.createClass({
 	},
 
 	handleSubmit: function () {
-
 		this.setState({ greeting: "" })
-		if (this.state.start === "" || this.state.stop === "") {
+		if (this.state.start === "Departure Station " || this.state.stop === "Arrival Station ") {
 			this.setState({ greeting: "(You are missing an entry)" })
 			$('#cookies-warning').css('color', 'red');
 		} else if (this.state.start === this.state.stop) {
@@ -130,7 +132,7 @@ var Welcome = React.createClass({
 				  <div className="panel-body">
 						<div className="dropdown">
 							<div className="dropdown container">
-							  <button id="home-dropdown-button" className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.initStation}
+							  <button id="start-dropdown-button" className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.initStation}
 							  </button>
 							  <ul className="dropdown-menu scrollable-menu">
 							    <li onClick={this.setStartStation}><a value="12TH">12th St. Oakland City Center</a></li>
@@ -191,7 +193,7 @@ var Welcome = React.createClass({
 				  <div className="panel-body">
 						<div className="dropdown">
 							<div className="dropdown container">
-							  <button id="work-dropdown" className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.initStop}
+							  <button id="stop-dropdown-button" className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.initStop}
 							  </button>
 							  <ul className="dropdown-menu scrollable-menu">
 							    <li onClick={this.setStopStation}><a value="12TH">12th St. Oakland City Center</a></li>

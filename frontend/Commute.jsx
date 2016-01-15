@@ -1,4 +1,5 @@
 var React = require('react');
+var TripStore = require('./TripStore');
 var History = require('react-router').History;
 
 var Commute = React.createClass({
@@ -19,63 +20,20 @@ var Commute = React.createClass({
 
 	componentDidMount: function () {
 		this.setState({ home: this.props.home, work: this.props.work });
+		this.tripListener = TripStore.addListener(this._tripInformationUpdated);
 	},
 
-	goWork: function () {
-		this.setState({ startPoint: this.state.home, endPoint: this.state.work})
-		this.setState({ headingTo: "Going to work!" })
-		this.setState({ optionSelected: true })
-	  var xhttp = new XMLHttpRequest();
-	  var linkStart = "http://api.bart.gov/api/sched.aspx?cmd=depart&orig="
-	  var link = linkStart + this.state.home + 
-	  						"&dest=" + this.state.work + 
-	  						this.state.apiKey;
-	  xhttp.onreadystatechange = function() {
-	    if (xhttp.readyState == 4 && xhttp.status == 200) {
-	    	var response = xhttp.responseXML;
-	    	this.parseResponse(response);
-	    }
-	  }.bind(this);
-	  xhttp.open("GET", link, true);
-	  xhttp.send();
-  },
-
-	goHome: function () {
-		this.setState({ startPoint: this.state.work, endPoint: this.state.home})
-		this.setState({ headingTo: "Going home!" })
-		this.setState({ optionSelected: true })
-	  var xhttp = new XMLHttpRequest();
-	  var linkStart = "http://api.bart.gov/api/sched.aspx?cmd=depart&orig="
-	  var link = linkStart + this.state.work + 
-	  						"&dest=" + this.state.home + 
-	  						this.state.apiKey;
-	  xhttp.onreadystatechange = function() {
-	    if (xhttp.readyState == 4 && xhttp.status == 200) {
-	    	var response = xhttp.responseXML;
-	    	this.parseResponse(response);
-	    }
-	  }.bind(this);
-	  xhttp.open("GET", link, true);
-	  xhttp.send();
+	componentWillUnmount: function () {
+		this.tripListener.remove();
 	},
 
-	parseResponse: function (response) {
-		var tripObjectArray = [];
-		var tripObject = {};
-		var trips = response.getElementsByTagName("trip");
-		for (var i = 0; i < trips.length; i++) {
-			tripObject = {
-				departure: $(trips[i]).attr('origTimeMin'),
-				arrival: $(trips[i]).attr('destTimeMin'),
-			}
-			tripObjectArray.push(tripObject); 
-		}
-		this.setState({ trips: tripObjectArray })
+	_tripInformationUpdated: function () {
+		this.setState({ trips: TripStore.all() });
 	},
 
 	resetCookies: function () {
-		document.cookie = "home" + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"
-		document.cookie = "work" + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"
+		document.cookie = "start" + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"
+		document.cookie = "stop" + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"
 		this.props.history.pushState(null, "/");
 	},
 
@@ -86,8 +44,8 @@ var Commute = React.createClass({
 	render: function () {
 				return (
 					<div className="commute show">
-						<h1 className="commute header">{this.state.headingTo}</h1>            
-						<h2 className="commute subheader">{this.state.home} to {this.state.work}</h2>
+						<h1 className="commute header">HELLO</h1>            
+						<h2 className="commute subheader">{this.props.startFull} to {this.props.stopFull}</h2>
 						  <table className="table table-bordered">
 						    <thead>
 						      <tr>
