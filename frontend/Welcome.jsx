@@ -1,4 +1,5 @@
 var React = require('react');
+var Commute = require('./Commute');
 var History = require('react-router').History;
 
 var Welcome = React.createClass({
@@ -55,8 +56,9 @@ var Welcome = React.createClass({
 
 	render: function () {
 		return (
+		<div className="all components">
 			<div className="welcome page">
-				<h1 className="welcome header">One-Time Setup</h1>
+				<h1 className="welcome header">QuickPlanner</h1>
 				<div className="panel panel-default">
 				  <div className="panel-heading">
 				    <h3 className="panel-title">What station do you commute from?</h3>
@@ -178,9 +180,16 @@ var Welcome = React.createClass({
 						</div>
 				  </div>
 				</div>
-				<button onClick={this.handleSubmit} type="button" className="btn btn-success">Done</button>
-				<h6 id="cookies-warning">{this.state.greeting}</h6>
+				<div className="panel panel-default">
+					<div className="panel-body">
+					<button onClick={this.handleSubmit} type="button" className="btn btn-success">Done</button>
+					<h6 id="cookies-warning">{this.state.greeting}</h6>
+					</div>
+				</div>
 			</div>
+			<br/>
+			<Commute/>
+		</div>
 		)
 	}
 });

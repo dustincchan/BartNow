@@ -6,7 +6,6 @@
 }
 
 .panel.panel-default {
-    width: 50%;
     position: relative;
     margin: auto;
 }
@@ -33,7 +32,7 @@ ul.dropdown-menu.scrollable-menu {
     background-color: #5cb85c;
     border-color: #4cae4c;
     position: relative;
-    width: 10%;
+    width: 107px;
     min-width: 1%;
     top: 10px;
 }
@@ -85,6 +84,11 @@ th#departing {
 
 th#arriving {
     text-align: center;
+}
+
+.all.components {
+    width: 450px;
+    margin: auto;
 }
 /*DO NOT TOUCH VERY SENSITIVE THANK YOU*/
 @media screen and (max-device-width: 480px) {
