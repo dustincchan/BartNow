@@ -38,13 +38,12 @@ var Commute = React.createClass({
 	},
 
 	goBack: function () {
-		this.setState({ optionSelected: false });
+		
 	},
 
 	render: function () {
 				return (
 					<div className="commute show">
-						<h1 className="commute header">HELLO</h1>            
 						<h2 className="commute subheader">{this.props.startFull} to {this.props.stopFull}</h2>
 						  <table className="table table-bordered">
 						    <thead>
@@ -64,7 +63,6 @@ var Commute = React.createClass({
 						    	})}
 						    </tbody>
 						  </table>
-						  <button id="back-button" onClick={this.goBack} type="button" className="btn btn-danger">Back</button>
 					</div>
 				)
 		}

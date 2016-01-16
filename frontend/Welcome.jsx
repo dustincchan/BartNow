@@ -123,72 +123,68 @@ var Welcome = React.createClass({
 	render: function () {
 		return (
 		<div className="all components">
+			<img src="http://www.ilikewallpaper.net/iphone-4s-wallpapers/download/9787/Downtown-Bay-Bridge-Sa-iphone-4s-wallpaper-ilikewallpaper_com.jpg" id="background-image"/>
 			<div className="welcome page">
 				<h1 className="welcome header">QuickPlanner</h1>
-				<div className="panel panel-default">
-				  <div className="panel-heading">
-				    <h3 className="panel-title">Leaving from:</h3>
-				  </div>
-				  <div className="panel-body">
-						<div className="dropdown">
-							<div className="dropdown container">
-							  <button id="start-dropdown-button" className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.initStation}
-							  </button>
-							  <ul className="dropdown-menu scrollable-menu">
-							    <li onClick={this.setStartStation}><a value="12TH">12th St. Oakland City Center</a></li>
-							    <li onClick={this.setStartStation}><a value="16TH">16th St. Mission</a></li>
-							    <li onClick={this.setStartStation}><a value="19TH">19th St. Oakland</a></li>
-							    <li onClick={this.setStartStation}><a value="24TH">24th St. Mission</a></li>
-							    <li onClick={this.setStartStation}><a value="ASHB">Ashby</a></li>
-							    <li onClick={this.setStartStation}><a value="BALB">Balboa Park</a></li>
-							    <li onClick={this.setStartStation}><a value="BAYF">Bay Fair</a></li>
-							    <li onClick={this.setStartStation}><a value="CAST">Castro Valley</a></li>
-							    <li onClick={this.setStartStation}><a value="CIVC">Civic Center/UN Plaza</a></li>
-							    <li onClick={this.setStartStation}><a value="COLS">Coliseum</a></li>
-							    <li onClick={this.setStartStation}><a value="COLM">Colma</a></li>
-							    <li onClick={this.setStartStation}><a value="CONC">Concord</a></li>
-							    <li onClick={this.setStartStation}><a value="DALY">Daly City</a></li>
-							    <li onClick={this.setStartStation}><a value="DBRK">Downtown Berkeley</a></li>
-							    <li onClick={this.setStartStation}><a value="DUBL">Dublin/Pleasanton</a></li>
-							    <li onClick={this.setStartStation}><a value="DELN">El Cerrito del Norte</a></li>
-							    <li onClick={this.setStartStation}><a value="PLZA">El Cerrito Plaza</a></li>
-							    <li onClick={this.setStartStation}><a value="EMBR">Embarcadero</a></li>
-							    <li onClick={this.setStartStation}><a value="FRMT">Fremont</a></li>
-							    <li onClick={this.setStartStation}><a value="FTVL">Fruitvale</a></li>
-							    <li onClick={this.setStartStation}><a value="GLEN">Glen Park</a></li>
-							    <li onClick={this.setStartStation}><a value="HAYW">Hayward</a></li>
-							    <li onClick={this.setStartStation}><a value="LAFY">Lafayette</a></li>
-							    <li onClick={this.setStartStation}><a value="LAKE">Lake Merritt</a></li>
-							    <li onClick={this.setStartStation}><a value="MCAR">MacArthur</a></li>
-							   	<li onClick={this.setStartStation}><a value="MLBR">Millbrae</a></li>
-							    <li onClick={this.setStartStation}><a value="MONT">Montgomery St.</a></li>
-							    <li onClick={this.setStartStation}><a value="NBRK">North Berkeley</a></li>
-							    <li onClick={this.setStartStation}><a value="NCON">North Concord/Martinez</a></li>
-							    <li onClick={this.setStartStation}><a value="OAKL">Oakland Intl Airport</a></li>
-							    <li onClick={this.setStartStation}><a value="ORIN">Orinda</a></li>
-							   	<li onClick={this.setStartStation}><a value="PITT">Pittsburg/Bay Point</a></li>
-							    <li onClick={this.setStartStation}><a value="PHIL">Pleasant Hill/Contra Costa Centre</a></li>
-							    <li onClick={this.setStartStation}><a value="POWL">Powell St.</a></li>
-							    <li onClick={this.setStartStation}><a value="RICH">Richmond</a></li>
-							    <li onClick={this.setStartStation}><a value="ROCK">Rockridge</a></li>
-							    <li onClick={this.setStartStation}><a value="SBRN">San Bruno</a></li>
-							   	<li onClick={this.setStartStation}><a value="SFIA">San Francisco Intl Airport</a></li>
-							    <li onClick={this.setStartStation}><a value="SANL">San Leandro</a></li>
-							    <li onClick={this.setStartStation}><a value="SHAY">South Hayward</a></li>
-							    <li onClick={this.setStartStation}><a value="SSAN">South San Francisco</a></li>
-							    <li onClick={this.setStartStation}><a value="UCTY">Union City</a></li>
-							    <li onClick={this.setStartStation}><a value="WCRK">Walnut Creek</a></li>
-							   	<li onClick={this.setStartStation}><a value="WDUB">West Dublin/Pleasanton</a></li>
-							    <li onClick={this.setStartStation}><a value="WOAK">West Oakland</a></li>
-							  </ul>
+				  <h3 className="panel-title">Leaving from:</h3>
+				  	<div className="panel-body">
+							<div className="dropdown">
+								<div className="dropdown container">
+								  <button id="start-dropdown-button" className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.initStation}
+								  </button>
+								  <ul className="dropdown-menu scrollable-menu">
+								    <li onClick={this.setStartStation}><a value="12TH">12th St. Oakland City Center</a></li>
+								    <li onClick={this.setStartStation}><a value="16TH">16th St. Mission</a></li>
+								    <li onClick={this.setStartStation}><a value="19TH">19th St. Oakland</a></li>
+								    <li onClick={this.setStartStation}><a value="24TH">24th St. Mission</a></li>
+								    <li onClick={this.setStartStation}><a value="ASHB">Ashby</a></li>
+								    <li onClick={this.setStartStation}><a value="BALB">Balboa Park</a></li>
+								    <li onClick={this.setStartStation}><a value="BAYF">Bay Fair</a></li>
+								    <li onClick={this.setStartStation}><a value="CAST">Castro Valley</a></li>
+								    <li onClick={this.setStartStation}><a value="CIVC">Civic Center/UN Plaza</a></li>
+								    <li onClick={this.setStartStation}><a value="COLS">Coliseum</a></li>
+								    <li onClick={this.setStartStation}><a value="COLM">Colma</a></li>
+								    <li onClick={this.setStartStation}><a value="CONC">Concord</a></li>
+								    <li onClick={this.setStartStation}><a value="DALY">Daly City</a></li>
+								    <li onClick={this.setStartStation}><a value="DBRK">Downtown Berkeley</a></li>
+								    <li onClick={this.setStartStation}><a value="DUBL">Dublin/Pleasanton</a></li>
+								    <li onClick={this.setStartStation}><a value="DELN">El Cerrito del Norte</a></li>
+								    <li onClick={this.setStartStation}><a value="PLZA">El Cerrito Plaza</a></li>
+								    <li onClick={this.setStartStation}><a value="EMBR">Embarcadero</a></li>
+								    <li onClick={this.setStartStation}><a value="FRMT">Fremont</a></li>
+								    <li onClick={this.setStartStation}><a value="FTVL">Fruitvale</a></li>
+								    <li onClick={this.setStartStation}><a value="GLEN">Glen Park</a></li>
+								    <li onClick={this.setStartStation}><a value="HAYW">Hayward</a></li>
+								    <li onClick={this.setStartStation}><a value="LAFY">Lafayette</a></li>
+								    <li onClick={this.setStartStation}><a value="LAKE">Lake Merritt</a></li>
+								    <li onClick={this.setStartStation}><a value="MCAR">MacArthur</a></li>
+								   	<li onClick={this.setStartStation}><a value="MLBR">Millbrae</a></li>
+								    <li onClick={this.setStartStation}><a value="MONT">Montgomery St.</a></li>
+								    <li onClick={this.setStartStation}><a value="NBRK">North Berkeley</a></li>
+								    <li onClick={this.setStartStation}><a value="NCON">North Concord/Martinez</a></li>
+								    <li onClick={this.setStartStation}><a value="OAKL">Oakland Intl Airport</a></li>
+								    <li onClick={this.setStartStation}><a value="ORIN">Orinda</a></li>
+								   	<li onClick={this.setStartStation}><a value="PITT">Pittsburg/Bay Point</a></li>
+								    <li onClick={this.setStartStation}><a value="PHIL">Pleasant Hill/Contra Costa Centre</a></li>
+								    <li onClick={this.setStartStation}><a value="POWL">Powell St.</a></li>
+								    <li onClick={this.setStartStation}><a value="RICH">Richmond</a></li>
+								    <li onClick={this.setStartStation}><a value="ROCK">Rockridge</a></li>
+								    <li onClick={this.setStartStation}><a value="SBRN">San Bruno</a></li>
+								   	<li onClick={this.setStartStation}><a value="SFIA">San Francisco Intl Airport</a></li>
+								    <li onClick={this.setStartStation}><a value="SANL">San Leandro</a></li>
+								    <li onClick={this.setStartStation}><a value="SHAY">South Hayward</a></li>
+								    <li onClick={this.setStartStation}><a value="SSAN">South San Francisco</a></li>
+								    <li onClick={this.setStartStation}><a value="UCTY">Union City</a></li>
+								    <li onClick={this.setStartStation}><a value="WCRK">Walnut Creek</a></li>
+								   	<li onClick={this.setStartStation}><a value="WDUB">West Dublin/Pleasanton</a></li>
+								    <li onClick={this.setStartStation}><a value="WOAK">West Oakland</a></li>
+								  </ul>
+								</div>
 							</div>
 						</div>
-				  </div>
-				</div>
 
-				<div className="panel panel-default">
 				  <div className="panel-heading">
-				    <h3 className="panel-title">Heading to:</h3>
+				    <h3 className="panel-title" id="heading-to-label">Heading to:</h3>
 				  </div>
 				  <div className="panel-body">
 						<div className="dropdown">
@@ -245,7 +241,6 @@ var Welcome = React.createClass({
 							</div>
 						</div>
 				  </div>
-				</div>
 				<div className="panel panel-default">
 					<div className="panel-body">
 					<button 
@@ -259,9 +254,11 @@ var Welcome = React.createClass({
 					</div>
 				</div>
 				<div className="collapse" id="commute-component">
-					<Commute 
-						start={this.state.start} stop={this.state.stop}
-						startFull={this.state.initStation} stopFull={this.state.initStop}/>
+					<div className="panel panel-default">
+						<Commute 
+							start={this.state.start} stop={this.state.stop}
+							startFull={this.state.initStation} stopFull={this.state.initStop}/>
+					</div>
 				</div>
 			</div>
 			<br/>

@@ -3,6 +3,12 @@
 
 .welcome.page {
     text-align: center;
+    position: relative;
+    top: 45px;
+}
+
+h1.welcome.header {
+    margin-bottom: 36px;
 }
 
 .panel.panel-default {
@@ -27,12 +33,15 @@ ul.dropdown-menu.scrollable-menu {
     left: 15px;
     text-align: center;
     font-size: 17px;
+    height: auto;
+    max-height: 300px;
+    overflow-x: hidden;
 }
 
 .btn-success {
     color: #fff;
-    background-color: #5cb85c;
-    border-color: #4cae4c;
+    background-color: #ce5241;
+    border-color: #ce5241;
     position: relative;
     width: 107px;
     min-width: 1%;
@@ -91,185 +100,28 @@ th#arriving {
 .all.components {
     width: 450px;
     margin: auto;
+    color: white;
+
 }
+
+img#background-image {
+    position: absolute;
+    width: 450px;
+    height: 705px;
+    min-width: 450px;
+    left: 463px;
+}
+
+h2.commute.subheader {
+    font-size: 20px;
+}
+
+h3#heading-to-label {
+    position: relative;
+    top: 10px;
+}
+
 /*DO NOT TOUCH VERY SENSITIVE THANK YOU*/
 @media screen and (max-device-width: 480px) {
-    .welcome.page {
-        text-align: center;
-    }
-
-    .dropdown.container {
-    width: 80%;
-    }
-
-    button.btn.btn-primary.dropdown-toggle {
-        width: 75%;
-        height: 200px;
-        font-size: 44px;
-    }
-
-    .open>.dropdown-menu {
-        display: block;
-        position: absolute;
-        width: 96%;
-        font-size: 46px;
-    }
-
-    ul.dropdown-menu.scrollable-menu {
-    width: 96%;
-    left: 16px;
-    text-align: center;
-    }   
-
-    #cookies-warning {
-        color: #134F1E;
-        font-size: 40px;
-        position: relative;
-        top: 52px;
-    }
-
-    .btn-success {
-        height: 129px;
-        width: 43%;
-        font-size: 72px;
-        margin-top: 10%;
-        box-shadow: 10px 10px 5px #888888;
-    }
-
-    button.btn.btn-primary.btn-lg.btn-block {
-        height: 200px;
-        font-size: 88px;
-        position: relative;
-        top: 86px;
-        box-shadow: 10px 10px 5px #888888;
-    }
-
-    button#work-button {
-        height: 200px;
-        font-size: 88px;
-        box-shadow: 10px 10px 5px #888888;
-        width: 100%
-    }
-    #change-commute-button {
-        color: #fff;
-        background-color: #d9534f;
-        border-color: #d43f3a;
-        position: relative;
-        top: 207px;
-        height: 150px;
-        width: 74%;
-        font-size: 41px;
-        box-shadow: 10px 10px 5px #888888;
-    }
-
-    .commute.options { 
-    	text-align: center;
-    }
-
-    h1.welcome.header {
-        font-size: 86px;
-        position: relative;
-        top: 10px;
-        margin-top: 0%;
-    }
-
-    h1.commute.options.header {
-        font-size: 71px;
-        margin-top: 11%;
-        margin-bottom: 6%;
-    }
-
-    h3.panel-title {
-        font-size: 50px;
-        height: 122px;
-        position: relative;
-        top: 36px;
-    }
-
-    .table-bordered {
-        border: 1px solid #ddd;
-        font-size: 60px;
-        text-align: center;
-    }
-
-    h1.commute.header {
-        text-align: center;
-        font-size: 78px;
-    }
-
-    h2.commute.subheader {
-        text-align: center;
-        font-size: 54px;
-        height: 66px;
-        margin-top: 71px;
-        margin-bottom: 112px;
-        color: #9F6C6C;
-    }
-
-    .commute.option.buttons {
-        width: 55%;
-        position: relative;
-        margin: auto;
-    }
-
-    button#start-dropdown-button {
-        width: 100%;
-        box-shadow: 10px 10px 5px #888888;
-    }
-
-    button#stop-dropdown-button {
-        width: 100%;
-        box-shadow: 10px 10px 5px #888888;  
-    }
-
-    .scrollable-menu {
-        height: auto;
-        max-height: 600px;
-        overflow-x: hidden;
-    }
-
-    .panel-default > .panel-heading {
-        color: #9F6C6C;
-        background-color: #FFFFFF;
-        border-color: #FFF;
-    }
-
-    .panel-default {
-        border-color: #FFF;
-    }
-
-    .welcome.page {
-        position: relative;
-        top: 100px;
-    }
-
-    button#back-button {
-        width: 61%;
-        font-size: 70px;
-        box-shadow: 10px 10px 5px #888888;
-        position: relative;
-        top: 150px;
-    }
-
-    .commute.show {
-        margin-top: 110px;
-    }
-
-    tbody {
-        color: #0D420D;
-    }
-
-    th {
-        text-align: center;
-    }
-
-    .panel.panel-default {
-    width: 100%;
-    }
-    button#home-button {
-        width: 100%;
-        margin: auto;
-        position: relative;
-        top: 113px;
-    }
+   
 }
