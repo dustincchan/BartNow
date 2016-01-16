@@ -25018,37 +25018,33 @@
 					),
 					React.createElement(
 						'div',
-						{ className: 'panel panel-default' },
+						{ className: 'panel-body' },
 						React.createElement(
-							'div',
-							{ className: 'panel-body' },
-							React.createElement(
-								'button',
-								{
-									onClick: this.handleSubmit,
-									'data-toggle': 'collapse',
-									'data-target': '#commute-component',
-									type: 'button',
-									className: 'btn btn-success' },
-								'Done'
-							),
-							React.createElement(
-								'h6',
-								{ id: 'cookies-warning' },
-								this.state.greeting
-							)
+							'button',
+							{
+								onClick: this.handleSubmit,
+								'data-toggle': 'collapse',
+								'data-target': '#commute-component',
+								type: 'button',
+								className: 'btn btn-success' },
+							'Done'
+						),
+						React.createElement(
+							'h6',
+							{ id: 'cookies-warning' },
+							this.state.greeting
 						)
-					),
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'collapse', id: 'commute-component' },
 					React.createElement(
 						'div',
-						{ className: 'collapse', id: 'commute-component' },
-						React.createElement(
-							'div',
-							{ className: 'panel panel-default' },
-							React.createElement(Commute, {
-								start: this.state.start, stop: this.state.stop,
-								startFull: this.state.initStation, stopFull: this.state.initStop })
-						)
+						{ className: 'panel panel-default' },
+						React.createElement(Commute, {
+							start: this.state.start, stop: this.state.stop,
+							startFull: this.state.initStation, stopFull: this.state.initStop })
 					)
 				),
 				React.createElement('br', null)

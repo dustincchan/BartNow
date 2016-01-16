@@ -241,17 +241,16 @@ var Welcome = React.createClass({
 							</div>
 						</div>
 				  </div>
-				<div className="panel panel-default">
-					<div className="panel-body">
-					<button 
-						onClick={this.handleSubmit} 
-						data-toggle="collapse"
-						data-target="#commute-component"
-						type="button" 
-						className="btn btn-success">Done
-					</button>
-					<h6 id="cookies-warning">{this.state.greeting}</h6>
-					</div>
+				<div className="panel-body">
+				<button 
+					onClick={this.handleSubmit} 
+					data-toggle="collapse"
+					data-target="#commute-component"
+					type="button" 
+					className="btn btn-success">Done
+				</button>
+				<h6 id="cookies-warning">{this.state.greeting}</h6>
+				</div>
 				</div>
 				<div className="collapse" id="commute-component">
 					<div className="panel panel-default">
@@ -260,7 +259,6 @@ var Welcome = React.createClass({
 							startFull={this.state.initStation} stopFull={this.state.initStop}/>
 					</div>
 				</div>
-			</div>
 			<br/>
 		</div>
 		)

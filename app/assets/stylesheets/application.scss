@@ -14,6 +14,8 @@ h1.welcome.header {
 .panel.panel-default {
     position: relative;
     margin: auto;
+    top: 74px;
+    opacity: 0.8;
 }
 
 .dropdown.container {
@@ -87,6 +89,7 @@ button#home-button {
 
 table.table.table-bordered {
     font-size: 20px;
+    color: black;
 }
 
 th#departing {
@@ -114,11 +117,16 @@ img#background-image {
 
 h2.commute.subheader {
     font-size: 20px;
+    color: black;
 }
 
 h3#heading-to-label {
     position: relative;
     top: 10px;
+}
+
+td {
+    width: 50%;
 }
 
 /*DO NOT TOUCH VERY SENSITIVE THANK YOU*/
