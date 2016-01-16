@@ -24141,7 +24141,7 @@
 			return React.createElement(
 				'div',
 				{ className: 'all components' },
-				React.createElement('img', { src: 'http://www.ilikewallpaper.net/iphone-4s-wallpapers/download/9787/Downtown-Bay-Bridge-Sa-iphone-4s-wallpaper-ilikewallpaper_com.jpg', id: 'background-image' }),
+				React.createElement('img', { src: 'Bay Bridge.jpg', id: 'background-image' }),
 				React.createElement(
 					'div',
 					{ className: 'welcome page' },

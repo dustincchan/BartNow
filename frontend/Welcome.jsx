@@ -123,7 +123,7 @@ var Welcome = React.createClass({
 	render: function () {
 		return (
 		<div className="all components">
-			<img src="http://www.ilikewallpaper.net/iphone-4s-wallpapers/download/9787/Downtown-Bay-Bridge-Sa-iphone-4s-wallpaper-ilikewallpaper_com.jpg" id="background-image"/>
+			<img src="Bay Bridge.jpg" id="background-image"/>
 			<div className="welcome page">
 				<h1 className="welcome header">QuickPlanner</h1>
 				  <h3 className="panel-title">Leaving from:</h3>
