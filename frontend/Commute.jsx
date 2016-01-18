@@ -26,8 +26,6 @@ var Commute = React.createClass({
 	_tripInformationUpdated: function () {
 		var stations = TripStore.getStationNames();
 		this.setState({ trips: TripStore.all(), startStation: stations[0], endStation: stations[1] });
-		$('#done-button').prop('disabled', true);
-		$("#done-button").html('Go');
 	},
 
 	resetCookies: function () {
@@ -43,7 +41,7 @@ var Commute = React.createClass({
 	render: function () {
 			return (
 				<div className="commute show">
-					<h2 className="commute subheader">{this.state.startStation} to {this.state.endStation}</h2>
+					<h2 className="commute subheader">{this.props.startFull} to {this.props.stopFull}</h2>
 					  <table className="table table-bordered">
 					    <thead>
 					      <tr>

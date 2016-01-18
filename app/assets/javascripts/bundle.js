@@ -24111,6 +24111,9 @@
 					}
 				}
 			}
+			if (this.state.start !== "FROM: " && this.state.end !== "TO: ") {
+				this.handleSubmit();
+			}
 		},
 
 		setCookie: function (start, stop) {
@@ -24120,7 +24123,6 @@
 
 		handleSubmit: function () {
 			BartActions.receiveStationNames([this.state.startStationName, this.state.endStationName]);
-			$('#done-button').button('loading');
 			this.setState({ greeting: "" });
 			if (this.state.start === "FROM: " || this.state.stop === "TO: ") {
 				this.setState({ greeting: "(You are missing an entry)" });
@@ -24140,22 +24142,22 @@
 		},
 
 		setStartStation: function (event) {
-			$('#done-button').button('reset');
 			this.setState({ start: event.target.getAttribute('value') });
 			this.setState({ startStationName: event.target.text + " " });
+			if (this.state.start !== "FROM: " && this.state.end !== "TO: ") {
+				this.handleSubmit();
+			}
 		},
 
 		setStopStation: function (event) {
-			$('.collapse').collapse('hide');
-			$('#done-button').button('reset');
 			this.setState({ stop: event.target.getAttribute('value') });
 			this.setState({ endStationName: event.target.text + " " });
+			if (this.state.start !== "FROM: " && this.state.end !== "TO: ") {
+				this.handleSubmit();
+			}
 		},
 
 		reverseRoute: function () {
-			$('.collapse').collapse('hide');
-			$('#done-button').button('reset');
-			$('#done-button').html('Go');
 			if (this.state.startStationName === "FROM: " || this.state.endStationName === "TO: ") {
 				$('#cookies-warning').css('color', 'red');
 				this.setState({ greeting: "(Arrival and departure stations must be selected first)" });
@@ -24166,6 +24168,7 @@
 				var start = this.state.start;
 				var stop = this.state.stop;
 				this.setState({ start: stop, stop: start });
+				this.handleSubmit();
 			}
 		},
 
@@ -25045,17 +25048,6 @@
 						'div',
 						{ className: 'panel-body' },
 						React.createElement(
-							'button',
-							{
-								onClick: this.handleSubmit,
-								id: 'done-button',
-								'data-loading-text': 'Loading...',
-								'data-target': '#commute-component',
-								type: 'button',
-								className: 'btn btn-success' },
-							'Go'
-						),
-						React.createElement(
 							'h6',
 							{ id: 'cookies-warning' },
 							this.state.greeting
@@ -25113,8 +25105,6 @@
 		_tripInformationUpdated: function () {
 			var stations = TripStore.getStationNames();
 			this.setState({ trips: TripStore.all(), startStation: stations[0], endStation: stations[1] });
-			$('#done-button').prop('disabled', true);
-			$("#done-button").html('Go');
 		},
 
 		resetCookies: function () {
@@ -25132,9 +25122,9 @@
 				React.createElement(
 					'h2',
 					{ className: 'commute subheader' },
-					this.state.startStation,
+					this.props.startFull,
 					' to ',
-					this.state.endStation
+					this.props.stopFull
 				),
 				React.createElement(
 					'table',

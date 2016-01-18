@@ -94,6 +94,9 @@ var Welcome = React.createClass({
 				}
 			}
 		}
+		if (this.state.start !== "FROM: " && this.state.end !== "TO: ") {
+			this.handleSubmit();
+		}
 	},
 
 	setCookie: function (start, stop) {
@@ -103,7 +106,6 @@ var Welcome = React.createClass({
 
 	handleSubmit: function () {
 		BartActions.receiveStationNames([this.state.startStationName, this.state.endStationName]);
-		$('#done-button').button('loading');
 		this.setState({ greeting: "" })
 		if (this.state.start === "FROM: " || this.state.stop === "TO: ") {
 			this.setState({ greeting: "(You are missing an entry)" })
@@ -121,22 +123,22 @@ var Welcome = React.createClass({
 	},
 
 	setStartStation: function (event) {
-		$('#done-button').button('reset');
 		this.setState({ start: event.target.getAttribute('value') })
 		this.setState({ startStationName: event.target.text + " " })
+		if (this.state.start !== "FROM: " && this.state.end !== "TO: ") {
+			this.handleSubmit();
+		}
 	},
 
 	setStopStation: function (event) {
-		$('.collapse').collapse('hide');
-		$('#done-button').button('reset');
 		this.setState({ stop: event.target.getAttribute('value') })
 		this.setState({ endStationName: event.target.text + " " })
+		if (this.state.start !== "FROM: " && this.state.end !== "TO: ") {
+			this.handleSubmit();
+		}
 	},
 
 	reverseRoute: function () {
-		$('.collapse').collapse('hide');
-		$('#done-button').button('reset');
-		$('#done-button').html('Go');
 		if (this.state.startStationName === "FROM: " || this.state.endStationName === "TO: ") {
 			$('#cookies-warning').css('color', 'red');
 			this.setState({ greeting: "(Arrival and departure stations must be selected first)" })
@@ -147,6 +149,7 @@ var Welcome = React.createClass({
 			var start = this.state.start;
 			var stop = this.state.stop;
 			this.setState({ start: stop, stop: start });
+			this.handleSubmit();
 		}
 	},
 
@@ -272,14 +275,6 @@ var Welcome = React.createClass({
 						</div>
 				  </div>
 				<div className="panel-body">
-				<button 
-					onClick={this.handleSubmit} 
-					id="done-button"
-					data-loading-text="Loading..."
-					data-target="#commute-component"
-					type="button" 
-					className="btn btn-success">Go
-				</button>
 				<h6 id="cookies-warning">{this.state.greeting}</h6>
 				</div>
 				</div>

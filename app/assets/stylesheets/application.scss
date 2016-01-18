@@ -24,12 +24,16 @@ h1.welcome.header {
 
 button#start-dropdown-button {
     width: 100%;
+    height: 50px;
     border-radius: 25px;
+    font-size: 21px;
 }
 
 button#stop-dropdown-button {
     width: 100%;
+    height: 50px;
     border-radius: 25px;
+    font-size: 21px;
 }
 
 ul.dropdown-menu.scrollable-menu {
@@ -132,7 +136,7 @@ td {
 }
 
 div#commute-component {
-    bottom: 668px;
+    bottom: 642px;
     position: relative;
 }
 
