@@ -24122,7 +24122,7 @@
 			BartActions.receiveStationNames([this.state.startStationName, this.state.endStationName]);
 			$('#done-button').button('loading');
 			this.setState({ greeting: "" });
-			if (this.state.start === "Departure Station " || this.state.stop === "Arrival Station ") {
+			if (this.state.start === "FROM: " || this.state.stop === "TO: ") {
 				this.setState({ greeting: "(You are missing an entry)" });
 				$('#cookies-warning').css('color', 'red');
 			} else if (this.state.start === this.state.stop) {
