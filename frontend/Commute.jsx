@@ -27,9 +27,7 @@ var Commute = React.createClass({
 		var stations = TripStore.getStationNames();
 		this.setState({ trips: TripStore.all(), startStation: stations[0], endStation: stations[1] });
 		$('#done-button').prop('disabled', true);
-		$("#done-button").html('Done!');
-		$("#more-button").fadeIn(2000);
-
+		$("#done-button").html('Go');
 	},
 
 	resetCookies: function () {

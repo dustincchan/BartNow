@@ -24119,6 +24119,9 @@
 		},
 
 		handleSubmit: function () {
+			setTimeout(function () {
+				$('.collapse').collapse('show');
+			}, 200);
 			BartActions.receiveStationNames([this.state.startStationName, this.state.endStationName]);
 			$('#done-button').button('loading');
 			this.setState({ greeting: "" });
@@ -24145,6 +24148,9 @@
 		},
 
 		reverseRoute: function () {
+			$('.collapse').collapse('hide');
+			$('#done-button').button('reset');
+			$('#done-button').html('Go');
 			if (this.state.startStationName === "FROM: " || this.state.endStationName === "TO: ") {
 				$('#cookies-warning').css('color', 'red');
 				this.setState({ greeting: "(Arrival and departure stations must be selected first)" });
@@ -25036,7 +25042,6 @@
 								onClick: this.handleSubmit,
 								id: 'done-button',
 								'data-loading-text': 'Loading...',
-								'data-toggle': 'collapse',
 								'data-target': '#commute-component',
 								type: 'button',
 								className: 'btn btn-success' },
@@ -25059,11 +25064,6 @@
 							start: this.state.start, stop: this.state.stop,
 							startFull: this.state.startStationName, stopFull: this.state.endStationName })
 					)
-				),
-				React.createElement(
-					'button',
-					{ id: 'more-button', type: 'button', className: 'btn btn-danger' },
-					'More'
 				)
 			);
 		}
@@ -25106,8 +25106,7 @@
 			var stations = TripStore.getStationNames();
 			this.setState({ trips: TripStore.all(), startStation: stations[0], endStation: stations[1] });
 			$('#done-button').prop('disabled', true);
-			$("#done-button").html('Done!');
-			$("#more-button").fadeIn(2000);
+			$("#done-button").html('Go');
 		},
 
 		resetCookies: function () {

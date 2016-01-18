@@ -102,6 +102,7 @@ var Welcome = React.createClass({
 	},
 
 	handleSubmit: function () {
+		setTimeout(function () {$('.collapse').collapse('show')}, 200)
 		BartActions.receiveStationNames([this.state.startStationName, this.state.endStationName]);
 		$('#done-button').button('loading');
 		this.setState({ greeting: "" })
@@ -128,6 +129,9 @@ var Welcome = React.createClass({
 	},
 
 	reverseRoute: function () {
+		$('.collapse').collapse('hide');
+		$('#done-button').button('reset');
+		$('#done-button').html('Go');
 		if (this.state.startStationName === "FROM: " || this.state.endStationName === "TO: ") {
 			$('#cookies-warning').css('color', 'red');
 			this.setState({ greeting: "(Arrival and departure stations must be selected first)" })
@@ -264,7 +268,6 @@ var Welcome = React.createClass({
 					onClick={this.handleSubmit} 
 					id="done-button"
 					data-loading-text="Loading..."
-					data-toggle="collapse"
 					data-target="#commute-component"
 					type="button" 
 					className="btn btn-success">Go
@@ -279,7 +282,6 @@ var Welcome = React.createClass({
 							startFull={this.state.startStationName} stopFull={this.state.endStationName}/>
 					</div>
 				</div>
-				<button id="more-button" type="button" className="btn btn-danger">More</button>
 		</div>
 
 		)
