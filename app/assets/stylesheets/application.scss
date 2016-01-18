@@ -8,14 +8,14 @@
 }
 
 h1.welcome.header {
-    margin-bottom: 36px;
+    margin-bottom: -42px;
 }
 
 .panel.panel-default {
     position: relative;
     margin: auto;
     opacity: 0.8;
-    background: black;
+    color: black;
 }
 
 .dropdown.container {
@@ -24,10 +24,12 @@ h1.welcome.header {
 
 button#start-dropdown-button {
     width: 100%;
+    border-radius: 25px;
 }
 
 button#stop-dropdown-button {
     width: 100%;
+    border-radius: 25px;
 }
 
 ul.dropdown-menu.scrollable-menu {
@@ -51,10 +53,12 @@ ul.dropdown-menu.scrollable-menu {
 h6#cookies-warning {
     position: relative;
     top: 10px;
+    font-size: 16px;
 }
 
 .everything {
     text-align: center;
+    background: #18181E;
 }
 
 .commute.option.buttons {
@@ -111,7 +115,7 @@ h2.commute.subheader {
 
 h3#heading-to-label {
     position: relative;
-    top: 10px;
+    margin-bottom: -13px;
 }
 
 td {
@@ -122,15 +126,39 @@ td {
     color: #fff;
     background-color: #d9534f;
     border-color: #d43f3a;
-    position: absolute;
-    left: 653px;
-    top: 665px;
+    position: relative;
+    bottom: 694px;
     border-radius: 27px;
 }
 
 div#commute-component {
     bottom: 653px;
     position: relative;
+}
+
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: inherit;
+    position: relative;
+    top: 8px;
+}
+
+.header-border {
+    width: 83%;
+    height: 80px;
+    border: 5px solid white;
+    border-radius: 65px;
+    position: relative;
+    bottom: 16px;
+    margin: auto;
+}
+
+button#swap-button {
+    position: relative;
+    top: 10px;
+    border-radius: 25px;
 }
 
 /*DO NOT TOUCH VERY SENSITIVE THANK YOU*/

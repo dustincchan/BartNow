@@ -7,5 +7,11 @@ module.exports = {
 			actionType: BartConstants.TRIP_INFO_RECEIVED,
 			tripInformation: tripInformation
 		})
+	},
+	receiveStationNames: function (stationNames) {
+		Dispatcher.dispatch({
+			actionType: BartConstants.STATION_NAMES_RECEIVED,
+			stationNames: stationNames
+		})
 	}
 }

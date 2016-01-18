@@ -7,19 +7,15 @@ var Commute = React.createClass({
 
 	getInitialState: function () {
 
-		return { home: "", 
-						 work: "", 
-						 startPoint: "",
-						 endpoint: "",
-						 headingTo: "",
+		return { 
 						 apiKey: "&key=ZV4R-PUQ9-86WT-DWE9",
-						 optionSelected: false,
-						 trips: []
+						 trips: [],
+						 startStation: "",
+						 endStation: ""
 						}
 	},
 
 	componentDidMount: function () {
-		this.setState({ home: this.props.home, work: this.props.work });
 		this.tripListener = TripStore.addListener(this._tripInformationUpdated);
 	},
 
@@ -28,9 +24,12 @@ var Commute = React.createClass({
 	},
 
 	_tripInformationUpdated: function () {
-		this.setState({ trips: TripStore.all() });
+		var stations = TripStore.getStationNames();
+		this.setState({ trips: TripStore.all(), startStation: stations[0], endStation: stations[1] });
 		$('#done-button').prop('disabled', true);
 		$("#done-button").html('Done!');
+		$("#more-button").fadeIn(2000);
+
 	},
 
 	resetCookies: function () {
@@ -44,29 +43,30 @@ var Commute = React.createClass({
 	},
 
 	render: function () {
-				return (
-					<div className="commute show">
-						<h2 className="commute subheader">{this.props.startFull} to {this.props.stopFull}</h2>
-						  <table className="table table-bordered">
-						    <thead>
-						      <tr>
-						        <th id="departing">Departing</th>
-						        <th id="arriving">Arriving</th>
-						      </tr>
-						    </thead>
-						    <tbody>
-						    	{this.state.trips.map(function (trip) {
-						    		return (
-						    			<tr key={trip.departure}>
-							    			<td>{trip.departure}</td>
-							    			<td>{trip.arrival}</td>
-							    		</tr>
-						    		)
-						    	})}
-						    </tbody>
-						  </table>
-					</div>
-				)
+			return (
+				<div className="commute show">
+					<h2 className="commute subheader">{this.state.startStation} to {this.state.endStation}</h2>
+					  <table className="table table-bordered">
+					    <thead>
+					      <tr>
+					        <th id="departing">Departing</th>
+					        <th id="arriving">Arriving</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					    	{this.state.trips.map(function (trip) {
+					    		return (
+					    			<tr key={trip.departure}>
+						    			<td>{trip.departure}</td>
+						    			<td>{trip.arrival}</td>
+						    		</tr>
+					    		)
+					    	})
+					    	}
+					    </tbody>
+					  </table>
+				</div>
+			)
 		}
 });
 

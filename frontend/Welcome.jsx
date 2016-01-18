@@ -1,6 +1,7 @@
 var React = require('react');
 var Commute = require('./Commute');
 var ApiUtil = require('./ApiUtil');
+var BartActions = require('./BartActions');
 var History = require('react-router').History;
 
 var stationMap = {
@@ -62,18 +63,21 @@ var Welcome = React.createClass({
 			for (var i = 0; i < cookies.length; i++) {
 				if (cookies[i].slice(0,5) === "start") {
 					var start = cookies[i].slice(6);
-					var initStation = stationMap[cookies[i].slice(6)]; 
+					var startStationName = stationMap[cookies[i].slice(6)]; 
 				} else if (cookies[i].slice(0,4) === "stop") {
 					var stop = cookies[i].slice(5);
-					var initStop = stationMap[cookies[i].slice(5)];
+					var endStationName = stationMap[cookies[i].slice(5)];
 				}
 			}
+		} else {
+			var startStationName = "FROM: ";
+			var endStationName = "TO: ";
 		}
 
 		return {start: start, 
-						initStation: initStation, 
+						startStationName: startStationName, 
 						stop: stop, 
-						initStop: initStop,
+						endStationName: endStationName,
 						greeting: "(Please enable cookies to use this site)"
 					}
 	},
@@ -98,14 +102,14 @@ var Welcome = React.createClass({
 	},
 
 	handleSubmit: function () {
-		$("#more-button").fadeIn();
+		BartActions.receiveStationNames([this.state.startStationName, this.state.endStationName]);
 		$('#done-button').button('loading');
 		this.setState({ greeting: "" })
 		if (this.state.start === "Departure Station " || this.state.stop === "Arrival Station ") {
 			this.setState({ greeting: "(You are missing an entry)" })
 			$('#cookies-warning').css('color', 'red');
 		} else if (this.state.start === this.state.stop) {
-			this.setState({ greeting: "(start and stop stations must not be the same)"})
+			this.setState({ greeting: "(Start and stop stations must not be the same)"})
 			$('#cookies-warning').css('color', 'red');
 		} else {
 			this.setCookie(this.state.start, this.state.stop);
@@ -115,25 +119,36 @@ var Welcome = React.createClass({
 
 	setStartStation: function (event) {
 		this.setState({ start: event.target.getAttribute('value') })
-		this.setState({ initStation: event.target.text + " " })
+		this.setState({ startStationName: event.target.text + " " })
 	},
 
 	setStopStation: function (event) {
 		this.setState({ stop: event.target.getAttribute('value') })
-		this.setState({ initStop: event.target.text + " " })
+		this.setState({ endStationName: event.target.text + " " })
+	},
+
+	reverseRoute: function () {
+		if (this.state.startStationName === "FROM: " || this.state.endStationName === "TO: ") {
+			$('#cookies-warning').css('color', 'red');
+			this.setState({ greeting: "(Arrival and departure stations must be selected first)" })
+		} else {
+			var from = this.state.startStationName;
+			var to = this.state.endStationName;
+			this.setState({ startStationName: to, endStationName: from })
+		}
 	},
 
 	render: function () {
 		return (
 		<div className="all components">
-			<img src="http://imgur.com/2sFJzpb.jpg" id="background-image"/>
+			<img src="Golden Gate Bridge.jpg" id="background-image"/>
 			<div className="welcome page">
 				<h1 className="welcome header">QuickPlanner</h1>
-				  <h3 className="panel-title">Leaving from:</h3>
+				<div className="header-border"/>
 				  	<div className="panel-body">
 							<div className="dropdown">
 								<div className="dropdown container">
-								  <button id="start-dropdown-button" className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.initStation}
+								  <button id="start-dropdown-button" className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.startStationName}
 								  </button>
 								  <ul className="dropdown-menu scrollable-menu">
 								    <li onClick={this.setStartStation}><a value="12TH">12th St. Oakland City Center</a></li>
@@ -186,13 +201,13 @@ var Welcome = React.createClass({
 							</div>
 						</div>
 
+					<button onClick={this.reverseRoute} id="swap-button" type="button" className="btn btn-warning">⇡ Reverse Route ⇣</button>
 				  <div className="panel-heading">
-				    <h3 className="panel-title" id="heading-to-label">Heading to:</h3>
 				  </div>
 				  <div className="panel-body">
 						<div className="dropdown">
 							<div className="dropdown container">
-							  <button id="stop-dropdown-button" className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.initStop}
+							  <button id="stop-dropdown-button" className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.endStationName}
 							  </button>
 							  <ul className="dropdown-menu scrollable-menu">
 							    <li onClick={this.setStopStation}><a value="12TH">12th St. Oakland City Center</a></li>
@@ -261,7 +276,7 @@ var Welcome = React.createClass({
 					<div className="panel panel-default">
 						<Commute 
 							start={this.state.start} stop={this.state.stop}
-							startFull={this.state.initStation} stopFull={this.state.initStop}/>
+							startFull={this.state.startStationName} stopFull={this.state.endStationName}/>
 					</div>
 				</div>
 				<button id="more-button" type="button" className="btn btn-danger">More</button>
