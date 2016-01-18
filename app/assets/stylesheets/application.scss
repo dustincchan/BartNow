@@ -4,7 +4,7 @@
 .welcome.page {
     text-align: center;
     position: relative;
-    top: 45px;
+    bottom: 658px;
 }
 
 h1.welcome.header {
@@ -14,8 +14,8 @@ h1.welcome.header {
 .panel.panel-default {
     position: relative;
     margin: auto;
-    top: 74px;
     opacity: 0.8;
+    background: black;
 }
 
 .dropdown.container {
@@ -42,8 +42,6 @@ ul.dropdown-menu.scrollable-menu {
 
 .btn-success {
     color: #fff;
-    background-color: #ce5241;
-    border-color: #ce5241;
     position: relative;
     width: 107px;
     min-width: 1%;
@@ -77,19 +75,10 @@ button#home-button {
     box-shadow: 5px 5px 3px #888888;
 }
 
-.btn-danger {
-    color: #fff;
-    background-color: #d9534f;
-    border-color: #d43f3a;
-    min-width: 40%;
-    position: relative;
-    top: 62px;
-    box-shadow: 5px 5px 3px #888888;
-}
+
 
 table.table.table-bordered {
     font-size: 20px;
-    color: black;
 }
 
 th#departing {
@@ -102,22 +91,22 @@ th#arriving {
 
 .all.components {
     width: 450px;
+    height: 705px;
     margin: auto;
     color: white;
 
 }
 
 img#background-image {
-    position: absolute;
+    display: inline-block;
     width: 450px;
     height: 705px;
     min-width: 450px;
-    left: 463px;
+    left: 458px;
 }
 
 h2.commute.subheader {
     font-size: 20px;
-    color: black;
 }
 
 h3#heading-to-label {
@@ -127,6 +116,21 @@ h3#heading-to-label {
 
 td {
     width: 50%;
+}
+
+#more-button {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    position: absolute;
+    left: 653px;
+    top: 665px;
+    border-radius: 27px;
+}
+
+div#commute-component {
+    bottom: 653px;
+    position: relative;
 }
 
 /*DO NOT TOUCH VERY SENSITIVE THANK YOU*/

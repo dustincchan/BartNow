@@ -79,6 +79,7 @@ var Welcome = React.createClass({
 	},
 
 	componentDidMount: function () {
+		$('#more-button').hide();
 		if (document.cookie != "") {
 			var cookies = document.cookie.replace(/ /g,'').split(";")
 			for (var i = 0; i < cookies.length; i++) {
@@ -97,6 +98,8 @@ var Welcome = React.createClass({
 	},
 
 	handleSubmit: function () {
+		$("#more-button").fadeIn();
+		$('#done-button').button('loading');
 		this.setState({ greeting: "" })
 		if (this.state.start === "Departure Station " || this.state.stop === "Arrival Station ") {
 			this.setState({ greeting: "(You are missing an entry)" })
@@ -123,7 +126,7 @@ var Welcome = React.createClass({
 	render: function () {
 		return (
 		<div className="all components">
-			<img src="Bay Bridge.jpg" id="background-image"/>
+			<img src="http://imgur.com/2sFJzpb.jpg" id="background-image"/>
 			<div className="welcome page">
 				<h1 className="welcome header">QuickPlanner</h1>
 				  <h3 className="panel-title">Leaving from:</h3>
@@ -244,10 +247,12 @@ var Welcome = React.createClass({
 				<div className="panel-body">
 				<button 
 					onClick={this.handleSubmit} 
+					id="done-button"
+					data-loading-text="Loading..."
 					data-toggle="collapse"
 					data-target="#commute-component"
 					type="button" 
-					className="btn btn-success">Done
+					className="btn btn-success">Go
 				</button>
 				<h6 id="cookies-warning">{this.state.greeting}</h6>
 				</div>
@@ -259,8 +264,9 @@ var Welcome = React.createClass({
 							startFull={this.state.initStation} stopFull={this.state.initStop}/>
 					</div>
 				</div>
-			<br/>
+				<button id="more-button" type="button" className="btn btn-danger">More</button>
 		</div>
+
 		)
 	}
 });

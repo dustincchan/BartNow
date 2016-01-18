@@ -29,6 +29,8 @@ var Commute = React.createClass({
 
 	_tripInformationUpdated: function () {
 		this.setState({ trips: TripStore.all() });
+		$('#done-button').prop('disabled', true);
+		$("#done-button").html('Done!');
 	},
 
 	resetCookies: function () {

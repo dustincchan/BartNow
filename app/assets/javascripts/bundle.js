@@ -24096,6 +24096,7 @@
 		},
 
 		componentDidMount: function () {
+			$('#more-button').hide();
 			if (document.cookie != "") {
 				var cookies = document.cookie.replace(/ /g, '').split(";");
 				for (var i = 0; i < cookies.length; i++) {
@@ -24114,6 +24115,8 @@
 		},
 
 		handleSubmit: function () {
+			$("#more-button").fadeIn();
+			$('#done-button').button('loading');
 			this.setState({ greeting: "" });
 			if (this.state.start === "Departure Station " || this.state.stop === "Arrival Station ") {
 				this.setState({ greeting: "(You are missing an entry)" });
@@ -24141,7 +24144,7 @@
 			return React.createElement(
 				'div',
 				{ className: 'all components' },
-				React.createElement('img', { src: 'Bay Bridge.jpg', id: 'background-image' }),
+				React.createElement('img', { src: 'http://imgur.com/2sFJzpb.jpg', id: 'background-image' }),
 				React.createElement(
 					'div',
 					{ className: 'welcome page' },
@@ -25023,11 +25026,13 @@
 							'button',
 							{
 								onClick: this.handleSubmit,
+								id: 'done-button',
+								'data-loading-text': 'Loading...',
 								'data-toggle': 'collapse',
 								'data-target': '#commute-component',
 								type: 'button',
 								className: 'btn btn-success' },
-							'Done'
+							'Go'
 						),
 						React.createElement(
 							'h6',
@@ -25047,7 +25052,11 @@
 							startFull: this.state.initStation, stopFull: this.state.initStop })
 					)
 				),
-				React.createElement('br', null)
+				React.createElement(
+					'button',
+					{ id: 'more-button', type: 'button', className: 'btn btn-danger' },
+					'More'
+				)
 			);
 		}
 	});
@@ -25091,6 +25100,8 @@
 
 		_tripInformationUpdated: function () {
 			this.setState({ trips: TripStore.all() });
+			$('#done-button').prop('disabled', true);
+			$("#done-button").html('Done!');
 		},
 
 		resetCookies: function () {
