@@ -78,7 +78,7 @@ var Welcome = React.createClass({
 						startStationName: startStationName, 
 						stop: stop, 
 						endStationName: endStationName,
-						greeting: "(Please enable cookies to use this site)"
+						greeting: ""
 					}
 	},
 
@@ -121,7 +121,6 @@ var Welcome = React.createClass({
 	},
 
 	setStartStation: function (event) {
-		$('.collapse').collapse('hide');
 		$('#done-button').button('reset');
 		this.setState({ start: event.target.getAttribute('value') })
 		this.setState({ startStationName: event.target.text + " " })
@@ -214,7 +213,7 @@ var Welcome = React.createClass({
 							</div>
 						</div>
 
-					<button onClick={this.reverseRoute} id="swap-button" type="button" className="btn btn-warning">⇡ Reverse Route ⇣</button>
+					<button onClick={this.reverseRoute} id="swap-button" type="button" className="btn btn-default">⇡ Reverse Route ⇣</button>
 				  <div className="panel-heading">
 				  </div>
 				  <div className="panel-body">

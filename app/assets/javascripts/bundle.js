@@ -24095,7 +24095,7 @@
 				startStationName: startStationName,
 				stop: stop,
 				endStationName: endStationName,
-				greeting: "(Please enable cookies to use this site)"
+				greeting: ""
 			};
 		},
 
@@ -24140,7 +24140,6 @@
 		},
 
 		setStartStation: function (event) {
-			$('.collapse').collapse('hide');
 			$('#done-button').button('reset');
 			this.setState({ start: event.target.getAttribute('value') });
 			this.setState({ startStationName: event.target.text + " " });
@@ -24612,7 +24611,7 @@
 					),
 					React.createElement(
 						'button',
-						{ onClick: this.reverseRoute, id: 'swap-button', type: 'button', className: 'btn btn-warning' },
+						{ onClick: this.reverseRoute, id: 'swap-button', type: 'button', className: 'btn btn-default' },
 						'⇡ Reverse Route ⇣'
 					),
 					React.createElement('div', { className: 'panel-heading' }),
