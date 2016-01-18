@@ -24119,9 +24119,6 @@
 		},
 
 		handleSubmit: function () {
-			setTimeout(function () {
-				$('.collapse').collapse('show');
-			}, 200);
 			BartActions.receiveStationNames([this.state.startStationName, this.state.endStationName]);
 			$('#done-button').button('loading');
 			this.setState({ greeting: "" });
@@ -24132,17 +24129,26 @@
 				this.setState({ greeting: "(Start and stop stations must not be the same)" });
 				$('#cookies-warning').css('color', 'red');
 			} else {
+				setTimeout(function () {
+					$('.collapse').collapse('show');
+				}, 200);
+				this.setState({ greeting: "" });
+				$('#cookies-warning').css('color', 'white');
 				this.setCookie(this.state.start, this.state.stop);
 				ApiUtil.getTripInfo(this.state.start, this.state.stop);
 			}
 		},
 
 		setStartStation: function (event) {
+			$('.collapse').collapse('hide');
+			$('#done-button').button('reset');
 			this.setState({ start: event.target.getAttribute('value') });
 			this.setState({ startStationName: event.target.text + " " });
 		},
 
 		setStopStation: function (event) {
+			$('.collapse').collapse('hide');
+			$('#done-button').button('reset');
 			this.setState({ stop: event.target.getAttribute('value') });
 			this.setState({ endStationName: event.target.text + " " });
 		},
@@ -24158,6 +24164,9 @@
 				var from = this.state.startStationName;
 				var to = this.state.endStationName;
 				this.setState({ startStationName: to, endStationName: from });
+				var start = this.state.start;
+				var stop = this.state.stop;
+				this.setState({ start: stop, stop: start });
 			}
 		},
 

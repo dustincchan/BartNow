@@ -52,11 +52,13 @@ ul.dropdown-menu.scrollable-menu {
 h6#cookies-warning {
     position: relative;
     font-size: 16px;
+    bottom: 4px;
 }
 
 .everything {
     text-align: center;
     background: #18181E;
+    zoom: 136%;
 }
 
 .commute.option.buttons {
@@ -130,7 +132,7 @@ td {
 }
 
 div#commute-component {
-    bottom: 682px;
+    bottom: 668px;
     position: relative;
 }
 
@@ -159,7 +161,18 @@ button#swap-button {
     border-radius: 25px;
 }
 
+body {
+  background-color: green;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #18181E;
+}
+
 /*DO NOT TOUCH VERY SENSITIVE THANK YOU*/
 @media screen and (max-device-width: 480px) {
-   
+   .everything {
+        zoom: 216%;
+   }
 }
