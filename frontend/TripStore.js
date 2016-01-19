@@ -12,6 +12,8 @@ updateTripInformation = function (trip) {
 
 updateStationNames = function (stationNames) {
 	stations = stationNames;
+	$('#route-times').fadeOut(100);
+	$('#route-times').fadeIn(500);
 };
 
 TripStore.all = function () {

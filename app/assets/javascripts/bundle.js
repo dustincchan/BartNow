@@ -25157,7 +25157,7 @@
 					),
 					React.createElement(
 						'tbody',
-						null,
+						{ id: 'route-times' },
 						this.state.trips.map(function (trip) {
 							return React.createElement(
 								'tr',
@@ -25583,6 +25583,8 @@
 
 	updateStationNames = function (stationNames) {
 		stations = stationNames;
+		$('#route-times').fadeOut(100);
+		$('#route-times').fadeIn(500);
 	};
 
 	TripStore.all = function () {
