@@ -24073,8 +24073,8 @@
 		mixins: [History],
 
 		getInitialState: function () {
-			var start = "Departure Station ";
-			var stop = "Arrival Station ";
+			var start = "From";
+			var stop = "To";
 			if (document.cookie != "") {
 				var cookies = document.cookie.replace(/ /g, '').split(";");
 				for (var i = 0; i < cookies.length; i++) {
@@ -24087,8 +24087,8 @@
 					}
 				}
 			} else {
-				var startStationName = "FROM: ";
-				var endStationName = "TO: ";
+				var startStationName = "From";
+				var endStationName = "To";
 			}
 
 			return { start: start,
@@ -24111,7 +24111,7 @@
 					}
 				}
 			}
-			if (this.state.start !== "FROM: " && this.state.end !== "TO: ") {
+			if (this.state.start !== "From" && this.state.end !== "To") {
 				this.handleSubmit();
 			}
 		},
@@ -24124,7 +24124,7 @@
 		handleSubmit: function () {
 			BartActions.receiveStationNames([this.state.startStationName, this.state.endStationName]);
 			this.setState({ greeting: "" });
-			if (this.state.start === "FROM: " || this.state.stop === "TO: ") {
+			if (this.state.start === "From" || this.state.stop === "To") {
 				this.setState({ greeting: "(You are missing an entry)" });
 				$('#cookies-warning').css('color', 'red');
 			} else if (this.state.start === this.state.stop) {
@@ -24144,21 +24144,25 @@
 		setStartStation: function (event) {
 			this.setState({ start: event.target.getAttribute('value') });
 			this.setState({ startStationName: event.target.text + " " });
-			if (this.state.start !== "FROM: " && this.state.end !== "TO: ") {
-				this.handleSubmit();
+			if (this.state.start !== "From" && this.state.end !== "To") {
+				setTimeout(function () {
+					this.handleSubmit();
+				}.bind(this), 100);
 			}
 		},
 
 		setStopStation: function (event) {
 			this.setState({ stop: event.target.getAttribute('value') });
 			this.setState({ endStationName: event.target.text + " " });
-			if (this.state.start !== "FROM: " && this.state.end !== "TO: ") {
-				this.handleSubmit();
+			if (this.state.start !== "From" && this.state.end !== "To") {
+				setTimeout(function () {
+					this.handleSubmit();
+				}.bind(this), 100);
 			}
 		},
 
 		reverseRoute: function () {
-			if (this.state.startStationName === "FROM: " || this.state.endStationName === "TO: ") {
+			if (this.state.startStationName === "From" || this.state.endStationName === "To") {
 				$('#cookies-warning').css('color', 'red');
 				this.setState({ greeting: "(Arrival and departure stations must be selected first)" });
 			} else {
@@ -24168,7 +24172,9 @@
 				var start = this.state.start;
 				var stop = this.state.stop;
 				this.setState({ start: stop, stop: start });
-				this.handleSubmit();
+				setTimeout(function () {
+					this.handleSubmit();
+				}.bind(this), 100);
 			}
 		},
 
@@ -25104,7 +25110,9 @@
 
 		_tripInformationUpdated: function () {
 			var stations = TripStore.getStationNames();
-			this.setState({ trips: TripStore.all(), startStation: stations[0], endStation: stations[1] });
+			setTimeout(function () {
+				this.setState({ trips: TripStore.all(), startStation: stations[0], endStation: stations[1] });
+			}.bind(this), 200);
 		},
 
 		resetCookies: function () {

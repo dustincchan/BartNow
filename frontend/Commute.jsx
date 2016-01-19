@@ -25,7 +25,7 @@ var Commute = React.createClass({
 
 	_tripInformationUpdated: function () {
 		var stations = TripStore.getStationNames();
-		this.setState({ trips: TripStore.all(), startStation: stations[0], endStation: stations[1] });
+		setTimeout(function () {this.setState({ trips: TripStore.all(), startStation: stations[0], endStation: stations[1] })}.bind(this), 200);
 	},
 
 	resetCookies: function () {
