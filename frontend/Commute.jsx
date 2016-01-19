@@ -6,13 +6,34 @@ var Commute = React.createClass({
 	mixins: [History],
 
 	getInitialState: function () {
+		var advisory = this.getAdvisoryInfo();
 
 		return { 
 						 apiKey: "&key=ZV4R-PUQ9-86WT-DWE9",
 						 trips: [],
 						 startStation: "",
-						 endStation: ""
+						 endStation: "",
+						 advisory: ""
 						}
+	},
+
+	getAdvisoryInfo: function () {
+		var apiKey = "&key=ZV4R-PUQ9-86WT-DWE9";
+	  var xhttp = new XMLHttpRequest();
+	  var link = "http://api.bart.gov/api/bsa.aspx?cmd=bsa" + apiKey;
+	  xhttp.onreadystatechange = function() {
+	    if (xhttp.readyState == 4 && xhttp.status == 200) {
+	    	var response = xhttp.responseXML;
+	    	this.parseAdvisory(response);
+	    }
+	  }.bind(this);
+	  xhttp.open("GET", link, true);
+	  xhttp.send();
+	},
+
+	parseAdvisory: function (response) {
+		var description = response.getElementsByTagName("description")[0].firstChild.data;
+		this.setState({ advisory: description });
 	},
 
 	componentDidMount: function () {
@@ -72,6 +93,10 @@ var Commute = React.createClass({
 						    		)
 						    	})
 						    	}
+						    	<tr key="advisory" id="advisory">
+						    		<td><img id="advisory-icon" src="train_inv.gif"/> Advisory</td>
+						    		<td>{this.state.advisory}</td>
+						    	</tr>
 						    </tbody>
 						  </table>
 					</div>
