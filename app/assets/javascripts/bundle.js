@@ -25121,62 +25121,96 @@
 			this.props.history.pushState(null, "/");
 		},
 
-		goBack: function () {},
-
 		render: function () {
-			return React.createElement(
-				'div',
-				{ className: 'commute show' },
-				React.createElement(
-					'h2',
-					{ className: 'commute subheader' },
-					this.props.startFull,
-					' to ',
-					this.props.stopFull
-				),
-				React.createElement(
-					'table',
-					{ className: 'table table-bordered' },
+			if (typeof this.state.trips === "undefined") {
+				return React.createElement(
+					'div',
+					{ className: 'commute show' },
 					React.createElement(
-						'thead',
-						null,
-						React.createElement(
-							'tr',
-							null,
-							React.createElement(
-								'th',
-								{ id: 'departing' },
-								'Departing'
-							),
-							React.createElement(
-								'th',
-								{ id: 'arriving' },
-								'Arriving'
-							)
-						)
+						'h2',
+						{ className: 'commute subheader' },
+						this.props.startFull,
+						' to ',
+						this.props.stopFull
 					),
 					React.createElement(
-						'tbody',
-						{ id: 'route-times' },
-						this.state.trips.map(function (trip) {
-							return React.createElement(
+						'table',
+						{ className: 'table table-bordered' },
+						React.createElement(
+							'thead',
+							null,
+							React.createElement(
 								'tr',
-								{ key: trip.departure },
+								null,
 								React.createElement(
-									'td',
-									null,
-									trip.departure
+									'th',
+									{ id: 'departing' },
+									'Departing'
 								),
 								React.createElement(
-									'td',
-									null,
-									trip.arrival
+									'th',
+									{ id: 'arriving' },
+									'Arriving'
 								)
-							);
-						})
+							)
+						)
 					)
-				)
-			);
+				);
+			} else {
+				return React.createElement(
+					'div',
+					{ className: 'commute show' },
+					React.createElement(
+						'h2',
+						{ className: 'commute subheader' },
+						this.props.startFull,
+						' to ',
+						this.props.stopFull
+					),
+					React.createElement(
+						'table',
+						{ className: 'table table-bordered' },
+						React.createElement(
+							'thead',
+							null,
+							React.createElement(
+								'tr',
+								null,
+								React.createElement(
+									'th',
+									{ id: 'departing' },
+									'Departing'
+								),
+								React.createElement(
+									'th',
+									{ id: 'arriving' },
+									'Arriving'
+								)
+							)
+						),
+						React.createElement(
+							'tbody',
+							{ id: 'route-times' },
+							this.state.trips.map(function (trip) {
+								return React.createElement(
+									'tr',
+									{ key: trip.departure },
+									React.createElement(
+										'td',
+										null,
+										trip.departure
+									),
+									React.createElement(
+										'td',
+										null,
+										trip.arrival
+									)
+								);
+							})
+						)
+					)
+				);
+			}
 		}
 	});
 

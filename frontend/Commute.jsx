@@ -34,35 +34,49 @@ var Commute = React.createClass({
 		this.props.history.pushState(null, "/");
 	},
 
-	goBack: function () {
-		
-	},
-
 	render: function () {
-			return (
-				<div className="commute show">
-					<h2 className="commute subheader">{this.props.startFull} to {this.props.stopFull}</h2>
-					  <table className="table table-bordered">
-					    <thead>
-					      <tr>
-					        <th id="departing">Departing</th>
-					        <th id="arriving">Arriving</th>
-					      </tr>
-					    </thead>
-					    <tbody id="route-times">
-					    	{this.state.trips.map(function (trip) {
-					    		return (
-					    			<tr key={trip.departure}>
-						    			<td>{trip.departure}</td>
-						    			<td>{trip.arrival}</td>
-						    		</tr>
-					    		)
-					    	})
-					    	}
-					    </tbody>
-					  </table>
-				</div>
-			)
+			if (typeof this.state.trips === "undefined") {
+				return (
+					<div className="commute show">
+						<h2 className="commute subheader">{this.props.startFull} to {this.props.stopFull}</h2>
+						  <table className="table table-bordered">
+						    <thead>
+						      <tr>
+						        <th id="departing">Departing</th>
+						        <th id="arriving">Arriving</th>
+						      </tr>
+						    </thead>
+
+						  </table>
+					</div>
+				);
+
+			} else {
+				return (
+					<div className="commute show">
+						<h2 className="commute subheader">{this.props.startFull} to {this.props.stopFull}</h2>
+						  <table className="table table-bordered">
+						    <thead>
+						      <tr>
+						        <th id="departing">Departing</th>
+						        <th id="arriving">Arriving</th>
+						      </tr>
+						    </thead>
+						    <tbody id="route-times">
+						    	{this.state.trips.map(function (trip) {
+						    		return (
+						    			<tr key={trip.departure}>
+							    			<td>{trip.departure}</td>
+							    			<td>{trip.arrival}</td>
+							    		</tr>
+						    		)
+						    	})
+						    	}
+						    </tbody>
+						  </table>
+					</div>
+				);
+			}
 		}
 });
 
