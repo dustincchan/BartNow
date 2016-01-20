@@ -46,39 +46,12 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var ReactRouter = __webpack_require__(159);
-	var Router = ReactRouter.Router;
-	var Route = ReactRouter.Route;
-	var IndexRoute = __webpack_require__(159).IndexRoute;
 
 	var Welcome = __webpack_require__(206);
 	var Commute = __webpack_require__(207);
 
-	var App = React.createClass({
-	  displayName: 'App',
-
-	  render: function () {
-	    return React.createElement(
-	      'div',
-	      { className: 'everything' },
-	      this.props.children
-	    );
-	  }
-	});
-
-	var routes = React.createElement(
-	  Route,
-	  { path: '/', component: App },
-	  React.createElement(IndexRoute, { component: Welcome }),
-	  React.createElement(Route, { path: 'commute', component: Commute })
-	);
-
 	document.addEventListener("DOMContentLoaded", function () {
-	  ReactDOM.render(React.createElement(
-	    Router,
-	    null,
-	    routes
-	  ), document.getElementById('root'));
+	  ReactDOM.render(React.createElement(Welcome, null), document.getElementById('root'));
 	});
 
 /***/ },

@@ -59,7 +59,7 @@ h6#cookies-warning {
     bottom: 4px;
 }
 
-.everything {
+#root {
     text-align: center;
     background: #18181E;
     zoom: 136%;
@@ -184,7 +184,7 @@ img#advisory-icon {
 
 /*DO NOT TOUCH VERY SENSITIVE THANK YOU*/
 @media screen and (max-device-width: 480px) {
-   .everything {
+   #root {
         zoom: 216%;
    }
 }
